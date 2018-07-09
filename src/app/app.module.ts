@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 import { LoadingPageModule, MaterialBarModule } from 'angular-loading-page';
+// import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -20,11 +21,11 @@ import { LoadingPageModule, MaterialBarModule } from 'angular-loading-page';
     AppRoutingModule,
     CoreModule,
     LayoutModule.forRoot(adminLteConf),
-    LoadingPageModule, MaterialBarModule
+    LoadingPageModule, MaterialBarModule,
   ],
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
   ],
   bootstrap: [AppComponent]
 })

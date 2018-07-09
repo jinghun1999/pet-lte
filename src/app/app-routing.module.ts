@@ -2,18 +2,20 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
   path: '',
   data: {
-      title: 'Get Started'
+      title: '首页'
   },
   children: [
     {
       path: '',
       component: HomeComponent
-    }, {
+    },
+    {
       path: 'accordion',
       loadChildren: './+accordion/accordion.module#AccordionModule',
       data: {
@@ -107,8 +109,11 @@ const routes: Routes = [
         data: {
           title: 'Tabs',
         }
-      }
-    ]
+      }, {
+      path: 'dashboard',
+      data: {title: '报表'},
+      loadChildren: './dashboard/dashboard.module#DashboardModule',
+    }]
   }, {
     path: 'form',
     data: {

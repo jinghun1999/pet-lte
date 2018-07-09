@@ -6,7 +6,7 @@ import { RoutingService } from '../services/routing.service';
 @Injectable()
 export class LayoutService {
   public isCustomLayout: BehaviorSubject<boolean> = new BehaviorSubject(true);
-
+  public isSidebarRightToggle: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private customLayout: boolean;
 
 

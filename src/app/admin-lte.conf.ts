@@ -10,6 +10,7 @@ export const adminLteConf = {
   // layout: 'normal',
   sidebarLeftMenu: [
     {label: '功能选项', separator: true},
+    {label: '概况', route: 'dashboard', iconClasses: 'fa fa-dashboard' },
     {label: '起始页面', route: '/', iconClasses: 'fa fa-road', pullRights: [{text: 'New', classes: 'label pull-right bg-green'}]},
     {
       label: 'Layout', iconClasses: 'fa fa-th-list', children: [
