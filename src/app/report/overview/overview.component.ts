@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { ReportService} from '../../services/report.service';
-import { Ent } from '../../models/ent';
+import {ReportService} from '../../services/report.service';
+import {GroupMonthRevenue} from '../../models';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,16 +10,19 @@ import { Ent } from '../../models/ent';
 })
 export class OverviewComponent implements OnInit {
   chartOption: any;
-  ds: Ent[];
+  ds: GroupMonthRevenue[];
 
   constructor(
     private dbService: ReportService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
-    setTimeout(() => { this.getDashboard(); });
+    setTimeout(() => {
+      this.getDashboard();
+    });
     this.chartOption = {
-      tooltip : {
+      tooltip: {
         trigger: 'axis'
       },
       legend: {
@@ -31,19 +34,19 @@ export class OverviewComponent implements OnInit {
         bottom: '3%',
         containLabel: true
       },
-      xAxis : [
+      xAxis: [
         {
-          type : 'category',
-          boundaryGap : false,
-          data : ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+          type: 'category',
+          boundaryGap: false,
+          data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
         }
       ],
-      yAxis : [
+      yAxis: [
         {
-          type : 'value'
+          type: 'value'
         }
       ],
-      series : [
+      series: [
         {
           name: '邮件营销',
           type: 'line',
@@ -90,8 +93,8 @@ export class OverviewComponent implements OnInit {
   }
 
   getDashboard(): void {
-    this.dbService.getBranchEnt().subscribe(rs => {
-      this.ds = rs.Sign ? rs.Message as Ent[] : [];
+    this.dbService.getGroupMonth().subscribe(rs => {
+      this.ds = rs.Sign ? rs.Message as GroupMonthRevenue[] : [];
     });
   }
 }

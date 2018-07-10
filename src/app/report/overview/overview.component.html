@@ -9,26 +9,18 @@
           <table class="table table-bordered table-hover">
             <thead>
             <tr>
-              <th>#</th>
-              <th>11月</th>
-              <th>合计</th>
+              <th>月份</th>
+              <th>营收</th>
+              <th>支出</th>
+              <th>银行流水</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <th>营收</th>
-              <th>2323</th>
-              <th>2323</th>
-            </tr>
-            <tr>
-              <th>银行流水</th>
-              <th>2324</th>
-              <th>5313</th>
-            </tr>
-            <tr>
-              <th>支出</th>
-              <th>232</th>
-              <th>4344</th>
+            <tr *ngFor="let item of ds">
+              <td>{{item.Month}}</td>
+              <td>{{item.Income}}</td>
+              <td>{{item.Expenses}}</td>
+              <td>{{item.BankFlow}}</td>
             </tr>
             </tbody>
           </table>

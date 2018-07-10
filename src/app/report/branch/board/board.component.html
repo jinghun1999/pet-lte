@@ -1,4 +1,4 @@
-<ul class="nav nav-pills">
+<ul class="nav nav-pills hidden">
   <li role="presentation" class="active"><a href="javascript:;">店铺概况</a></li>
   <li role="presentation"><a routerLink="/report/branch/member/{{id}}">会员</a></li>
 </ul>
@@ -45,178 +45,24 @@
     <div class="box box-info">
       <div class="box-header with-border">
         <h3 class="box-title">最近12个月收支数据</h3>
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse">
-            <i class="fa fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-        </div>
       </div>
       <div class="box-body">
         <div class="table-responsive ">
           <table class="table table-bordered table-hover">
             <thead>
             <tr>
-              <th></th>
-              <th>
-                06月
-              </th>
-              <th>
-                05月
-              </th>
-              <th>
-                04月
-              </th>
-              <th>
-                03月
-              </th>
-              <th>
-                02月
-              </th>
-              <th>
-                01月
-              </th>
-              <th>
-                12月
-              </th>
-              <th>
-                11月
-              </th>
-              <th>
-                10月
-              </th>
-              <th>
-                09月
-              </th>
-              <th>
-                08月
-              </th>
-              <th>
-                07月
-              </th>
-              <th>合计</th>
+              <th>月份</th>
+              <th>营收</th>
+              <th>支出</th>
+              <th>银行流水</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <th>营收</th>
-              <th>
-                544,832
-              </th>
-              <th>
-                356,890
-              </th>
-              <th>
-                446,470
-              </th>
-              <th>
-                426,850
-              </th>
-              <th>
-                456,687
-              </th>
-              <th>
-                497,578
-              </th>
-              <th>
-                744,782
-              </th>
-              <th>
-                491,941
-              </th>
-              <th>
-                710,115
-              </th>
-              <th>
-                539,365
-              </th>
-              <th>
-                479,538
-              </th>
-              <th>
-                698,629
-              </th>
-              <th>6,393,677</th>
-            </tr>
-            <tr>
-              <th>银行流水</th>
-              <th>
-                546,305
-              </th>
-              <th>
-                357,460
-              </th>
-              <th>
-                452,139
-              </th>
-              <th>
-                422,483
-              </th>
-              <th>
-                460,761
-              </th>
-              <th>
-                501,840
-              </th>
-              <th>
-                744,469
-              </th>
-              <th>
-                497,034
-              </th>
-              <th>
-                707,050
-              </th>
-              <th>
-                532,839
-              </th>
-              <th>
-                477,754
-              </th>
-              <th>
-                701,238
-              </th>
-              <th>6,401,372</th>
-            </tr>
-            <tr>
-              <th>支出</th>
-              <th>
-                439,129
-              </th>
-              <th>
-                325,945
-              </th>
-              <th>
-                353,512
-              </th>
-              <th>
-                368,556
-              </th>
-              <th>
-                361,575
-              </th>
-              <th>
-                203,893
-              </th>
-              <th>
-                489,433
-              </th>
-              <th>
-                259,286
-              </th>
-              <th>
-                467,703
-              </th>
-              <th>
-                355,389
-              </th>
-              <th>
-                229,439
-              </th>
-              <th>
-                438,195
-              </th>
-              <th>4,292,055</th>
+            <tr *ngFor="let item of ds">
+              <td>{{item.Month}}</td>
+              <td>{{item.Income}}</td>
+              <td>{{item.Expenses}}</td>
+              <td>{{item.BankFlow}}</td>
             </tr>
             </tbody>
           </table>

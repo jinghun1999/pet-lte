@@ -12,6 +12,7 @@ export const adminLteConf = {
     {label: '功能选项', separator: true},
 
     {label: '营收概况', route: 'report/overview', iconClasses: 'fa fa-dashboard'},
+    {label: '集团会员', route: 'report/guests', iconClasses: 'fa fa-users'},
     {label: '全部分店', route: 'report/subs', iconClasses: 'fa fa-road', pullRights: [{text: 'New', classes: 'label pull-right bg-green'}]},
     /*{
       label: 'Layout', iconClasses: 'fa fa-th-list',

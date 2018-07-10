@@ -11,7 +11,15 @@ export class ReportService {
   ) {
   }
 
+  getGroupMonth(): Observable<Result> {
+    return this.http.get<Result>(environment.baseUrl + '/reportBranch/getGroupMonthTotalRevenue');
+  }
+
   getBranchEnt(): Observable<Result> {
     return this.http.get<Result>(environment.baseUrl + '/report/getBranchEnterprise');
+  }
+
+  getMembers(): Observable<Result> {
+    return this.http.get<Result>(environment.baseUrl + '/reportBranch/getGuest');
   }
 }

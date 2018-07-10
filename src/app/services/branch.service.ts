@@ -19,4 +19,9 @@ export class BranchService {
   getMembers(id: string): Observable<Result> {
     return this.http.get<Result>(environment.baseUrl + '?id' + id);
   }
+
+
+  getMonthRevenue(id: string): Observable<Result> {
+    return this.http.get<Result>(environment.baseUrl + '/reportBranch/getMonthTotalRevenue?id=' + id);
+  }
 }

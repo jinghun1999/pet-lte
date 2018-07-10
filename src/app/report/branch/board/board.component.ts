@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {BranchService} from '../../../services';
-import {Result} from '../../../models';
+import {GroupMonthRevenue} from '../../../models';
 
 @Component({
   selector: 'app-board',
@@ -10,7 +10,7 @@ import {Result} from '../../../models';
 })
 export class BoardComponent implements OnInit {
   id: string;
-  data: Result;
+  ds: GroupMonthRevenue[];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -23,7 +23,7 @@ export class BoardComponent implements OnInit {
   }
 
   getBoard(): void {
-    this.branchService.getBoard(this.id)
-      .subscribe(res => this.data = res);
+    this.branchService.getMonthRevenue(this.id)
+      .subscribe(res => this.ds = res.Sign ? res.Message as GroupMonthRevenue[] : []);
   }
 }

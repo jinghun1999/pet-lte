@@ -1,0 +1,30 @@
+export class GuestModel {
+  ID: string;
+  GestCode: string;
+  LoseRightDate: string;
+  GestName: string;
+  GestSex: string;
+  GestBirthday: string;
+  MobilePhone: string;
+  TelPhone: string;
+  EMail: string;
+  GestAddress: string;
+  IsVIP: string;
+  VIPNo: string;
+  VIPAccount: number;
+  LastPaidTime: string;
+  GestStyle: string;
+  Status:  string;
+  PaidStatus: string;
+  Remark: string;
+  CreatedBy: string;
+  CreatedOn: string;
+  ModifiedBy: string;
+  ModifiedOn: string;
+  RewardPoint: number
+  PrepayMoney: number
+  EntID: string;
+  CreatedByID: string;
+  ModifiedByID: string;
+  LevelName: string;
+}

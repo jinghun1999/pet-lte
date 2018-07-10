@@ -1,10 +1,10 @@
-import { MemberModule } from './member.module';
+import { GuestModule } from './guest.module';
 
 describe('MemberModule', () => {
-  let memberModule: MemberModule;
+  let memberModule: GuestModule;
 
   beforeEach(() => {
-    memberModule = new MemberModule();
+    memberModule = new GuestModule();
   });
 
   it('should create an instance', () => {

@@ -3,3 +3,5 @@ export * from './userToken';
 export * from './ent';
 export * from './result';
 export * from './loginParams';
+export * from './groupMonthRevenue';
+export * from './guest';

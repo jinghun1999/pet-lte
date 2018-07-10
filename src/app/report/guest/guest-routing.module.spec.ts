@@ -1,10 +1,10 @@
-import { MemberRoutingModule } from './member-routing.module';
+import { GuestRoutingModule } from './guest-routing.module';
 
 describe('MemberRoutingModule', () => {
-  let memberRoutingModule: MemberRoutingModule;
+  let memberRoutingModule: GuestRoutingModule;
 
   beforeEach(() => {
-    memberRoutingModule = new MemberRoutingModule();
+    memberRoutingModule = new GuestRoutingModule();
   });
 
   it('should create an instance', () => {
