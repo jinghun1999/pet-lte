@@ -27,8 +27,8 @@ const routes: Routes = [
             path: 'branch',
             data: {title: '分店'},
             children: [
-              {path: 'board/:id', data: {title: '概况'}, loadChildren: './report/branch/board/board.module#BoardModule'},
-              {path: 'member/:id', data: {title: '会员'}, loadChildren: './report/branch/member/member.module#MemberModule'}
+              {path: 'board/:id', data: {title: '分店概况'}, loadChildren: './report/branch/board/board.module#BoardModule'},
+              {path: 'member/:id', data: {title: '分店会员'}, loadChildren: './report/branch/member/member.module#MemberModule'}
             ]
           }
         ]

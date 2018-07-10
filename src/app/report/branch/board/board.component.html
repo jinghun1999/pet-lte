@@ -1,3 +1,479 @@
-<p>
-  board works!
-</p>
+<ul class="nav nav-pills">
+  <li role="presentation" class="active"><a href="javascript:;">店铺概况</a></li>
+  <li role="presentation"><a routerLink="/report/branch/member/23">会员</a></li>
+  <li role="presentation"><a href="#">库存</a></li>
+</ul>
+<div class="row">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">上月总销售</span>
+        <span class="info-box-number"><small>￥</small>58,093</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">上月总支出</span>
+        <span class="info-box-number"><small>￥</small>57,071</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-red"><i class="ion ion-arrow-graph-up-right"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">本月会员</span>
+        <span class="info-box-number"><small>增加</small>200<small>人</small></span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">今日销售</span>
+        <span id="todayIncome" class="info-box-number"><small>￥</small>4,198</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">最近12个月收支数据</h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="table-responsive ">
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th></th>
+              <th>
+                06月
+              </th>
+              <th>
+                05月
+              </th>
+              <th>
+                04月
+              </th>
+              <th>
+                03月
+              </th>
+              <th>
+                02月
+              </th>
+              <th>
+                01月
+              </th>
+              <th>
+                12月
+              </th>
+              <th>
+                11月
+              </th>
+              <th>
+                10月
+              </th>
+              <th>
+                09月
+              </th>
+              <th>
+                08月
+              </th>
+              <th>
+                07月
+              </th>
+              <th>合计</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th>营收</th>
+              <th>
+                544,832
+              </th>
+              <th>
+                356,890
+              </th>
+              <th>
+                446,470
+              </th>
+              <th>
+                426,850
+              </th>
+              <th>
+                456,687
+              </th>
+              <th>
+                497,578
+              </th>
+              <th>
+                744,782
+              </th>
+              <th>
+                491,941
+              </th>
+              <th>
+                710,115
+              </th>
+              <th>
+                539,365
+              </th>
+              <th>
+                479,538
+              </th>
+              <th>
+                698,629
+              </th>
+              <th>6,393,677</th>
+            </tr>
+            <tr>
+              <th>银行流水</th>
+              <th>
+                546,305
+              </th>
+              <th>
+                357,460
+              </th>
+              <th>
+                452,139
+              </th>
+              <th>
+                422,483
+              </th>
+              <th>
+                460,761
+              </th>
+              <th>
+                501,840
+              </th>
+              <th>
+                744,469
+              </th>
+              <th>
+                497,034
+              </th>
+              <th>
+                707,050
+              </th>
+              <th>
+                532,839
+              </th>
+              <th>
+                477,754
+              </th>
+              <th>
+                701,238
+              </th>
+              <th>6,401,372</th>
+            </tr>
+            <tr>
+              <th>支出</th>
+              <th>
+                439,129
+              </th>
+              <th>
+                325,945
+              </th>
+              <th>
+                353,512
+              </th>
+              <th>
+                368,556
+              </th>
+              <th>
+                361,575
+              </th>
+              <th>
+                203,893
+              </th>
+              <th>
+                489,433
+              </th>
+              <th>
+                259,286
+              </th>
+              <th>
+                467,703
+              </th>
+              <th>
+                355,389
+              </th>
+              <th>
+                229,439
+              </th>
+              <th>
+                438,195
+              </th>
+              <th>4,292,055</th>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">最近12个月收支图表</h3>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="chart">
+              <div id="lineLegend2" class="legend"></div>
+              <canvas id="salesChart2" style="height: 180px;"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title pull-left" style="padding: 5px 10px;">库存概况</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="table-responsive">
+          <table id="SupplierList" class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>仓库名称</th>
+              <th>
+                医疗器械
+              </th>
+              <th>
+                宠物食品
+              </th>
+              <th>
+                疫苗药品
+              </th>
+              <th>
+                宠物玩具
+              </th>
+              <th>
+                宠物用品
+              </th>
+              <th>合计</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>后备库</td>
+              <td>21,107</td>
+              <td>36,747</td>
+              <td>44,157</td>
+              <td>38,586</td>
+              <td>37,038</td>
+              <td>
+                177,635
+              </td>
+            </tr>
+            <tr>
+              <td>销售库</td>
+              <td>16,552</td>
+              <td>29,492</td>
+              <td>20,481</td>
+              <td>24,143</td>
+              <td>42,906</td>
+              <td>
+                133,574
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title pull-left" style="padding: 5px 10px;">会员概况</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="chart">
+          <div id="lineLegend" class="legend"></div>
+          <canvas id="lineChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <!-- TO DO List -->
+    <div class="box box-primary">
+      <div class="box-header">
+        <i class="ion ion-clipboard"></i>
+
+        <h3 class="box-title">经营流水</h3>
+
+        <div class="box-tools pull-right">
+          <ul class="pagination pagination-sm inline">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">&raquo;</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+        <ul class="todo-list">
+          <li>
+            <!-- drag handle -->
+            <span class="handle">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
+            <!-- todo text -->
+            <span class="text">会员“张敏”消费290.00元（诊疗、药品）</span>
+            <!-- Emphasis label -->
+            <small class="label label-danger"><i class="fa fa-clock-o"></i> 12:31</small>
+            <!-- General tools such as edit or delete-->
+            <div class="tools">
+              <i class="fa fa-edit"></i>
+              <i class="fa fa-trash-o"></i>
+            </div>
+          </li>
+          <li>
+                                <span class="handle">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
+            <span class="text">“院长”完成一笔入库（3,900）。</span>
+            <small class="label label-danger"><i class="fa fa-clock-o"></i> 12:25</small>
+            <div class="tools">
+              <i class="fa fa-edit"></i>
+              <i class="fa fa-trash-o"></i>
+            </div>
+          </li>
+          <li>
+                                <span class="handle">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
+            <span class="text">会员“张兰”消费79.00元（诊疗、药品）</span>
+            <small class="label label-danger"><i class="fa fa-clock-o"></i> 12:20</small>
+            <div class="tools">
+              <i class="fa fa-edit"></i>
+              <i class="fa fa-trash-o"></i>
+            </div>
+          </li>
+          <li>
+                                <span class="handle">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
+            <span class="text">会员“赵广将”消费279.00元（诊疗、药品）</span>
+            <small class="label label-danger"><i class="fa fa-clock-o"></i> 12:19</small>
+            <div class="tools">
+              <i class="fa fa-edit"></i>
+              <i class="fa fa-trash-o"></i>
+            </div>
+          </li>
+          <li>
+                                <span class="handle">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
+            <span class="text">散客消费130.00元（诊疗、药品）</span>
+            <small class="label label-primary"><i class="fa fa-clock-o"></i> 12:01</small>
+            <div class="tools">
+              <i class="fa fa-edit"></i>
+              <i class="fa fa-trash-o"></i>
+            </div>
+          </li>
+          <li>
+                                <span class="handle">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
+            <span class="text">散客消费130.00元（诊疗、药品）</span>
+            <small class="label label-primary"><i class="fa fa-clock-o"></i> 11:30</small>
+            <div class="tools">
+              <i class="fa fa-edit"></i>
+              <i class="fa fa-trash-o"></i>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+  </div>
+</div>
+<div class="modal modal-info fade" id="modal-info">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">北京前门大街店</h4>
+      </div>
+      <div class="modal-body">
+
+
+        <div class="box box-widget widget-user">
+          <!-- Add the bg color to the header using any of the bg-* classes -->
+          <div class="widget-user-header bg-black" style="background: url('https://adminlte.io/themes/AdminLTE/dist/img/photo1.png') center center;">
+          </div>
+          <div class="widget-user-image">
+            <img class="img-circle" src="https://adminlte.io/themes/AdminLTE//dist/img/user3-128x128.jpg" alt="User Avatar">
+          </div>
+          <div class="box-footer no-padding">
+            <ul class="nav nav-stacked">
+              <li><a href="#">院长：<span class="pull-right badge bg-aqua">张凯</span></a></li>
+              <li><a href="#">电话：<span class="pull-right badge bg-green">19287261721</span></a></li>
+              <li><a href="#">地址：<span class="pull-right badge bg-red">北京前门大街东升胡同2号</span></a></li>
+              <li><a href="#">加盟时间：<span class="pull-right badge bg-aqua">2017-02-09</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
