@@ -10,9 +10,13 @@ export const adminLteConf = {
   layout: 'normal',
   sidebarLeftMenu: [
     {label: '功能选项', separator: true},
-    {label: '营收概况', route: 'dashboard', iconClasses: 'fa fa-dashboard'},
-    {label: '全部分店', route: '/login', iconClasses: 'fa fa-road', pullRights: [{text: 'New', classes: 'label pull-right bg-green'}]},
-    {
+    {label: '综合分析', iconClasses: 'fa fa-eercast',
+      children: [
+        {label: '营收概况', route: 'report/overview', iconClasses: 'fa fa-dashboard'},
+        {label: '全部分店', route: 'report/subs', iconClasses: 'fa fa-road', pullRights: [{text: 'New', classes: 'label pull-right bg-green'}]},
+      ]
+    }
+    /*{
       label: 'Layout', iconClasses: 'fa fa-th-list',
       children: [
         {label: 'Configuration', route: 'layout/configuration'},
@@ -38,6 +42,6 @@ export const adminLteConf = {
       label: 'Form', iconClasses: 'fa fa-files-o',
       children: [{label: 'Input Text', route: 'form/input-text'}]
     },
-    {label: 'Tabs', route: 'tabs', iconClasses: 'fa fa-th'}
+    {label: 'Tabs', route: 'tabs', iconClasses: 'fa fa-th'}*/
   ]
 };

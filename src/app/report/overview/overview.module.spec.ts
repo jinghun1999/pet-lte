@@ -1,10 +1,10 @@
-import { ReportModule } from './report.module';
+import { OverviewModule } from './overview.module';
 
 describe('DashboardModule', () => {
-  let dashboardModule: ReportModule;
+  let dashboardModule: OverviewModule;
 
   beforeEach(() => {
-    dashboardModule = new ReportModule();
+    dashboardModule = new OverviewModule();
   });
 
   it('should create an instance', () => {

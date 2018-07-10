@@ -7,7 +7,24 @@ const routes: Routes = [
     path: '',
     data: {title: '首页'},
     children: [
-      {path: '', redirectTo: '/report', pathMatch: 'full'},
+      {path: '', redirectTo: '/report/overview', pathMatch: 'full'},
+      {
+        path: 'report', data: {title: '报表分析'},
+        children: [
+          {
+            path: 'overview',
+            data: {title: '营收', description: '选择店铺以查看营业情况'},
+            loadChildren: './report/overview/overview.module#OverviewModule',
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'subs',
+            data: {title: '分店', description: '选择店铺以查看营业情况'},
+            loadChildren: './report/subs/subs.module#SubsModule',
+            canActivate: [AuthGuard]
+          }
+        ]
+      },
       {path: 'accordion', loadChildren: './+accordion/accordion.module#AccordionModule', data: {title: 'Accordion'}},
       {path: 'alert', loadChildren: './+alert/alert.module#AlertModule', data: {title: 'Alert'}},
       {
@@ -47,8 +64,7 @@ const routes: Routes = [
         ]
       },
       {path: 'dropdown', loadChildren: './+dropdown/dropdown.module#DropdownModule', data: {title: 'Dropdown'}},
-      {path: 'tabs', loadChildren: './+tabs/tabs.module#TabsModule', data: {title: 'Tabs'}},
-      {path: 'report', data: {title: '报表', description: '选择店铺以查看营业情况'}, loadChildren: './report/report.module#ReportModule'}
+      {path: 'tabs', loadChildren: './+tabs/tabs.module#TabsModule', data: {title: 'Tabs'}}
     ]
   },
   {

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DashboardService} from '../services/dashboard.service';
-import { Ent } from '../models/ent';
+import { DashboardService} from '../../services/dashboard.service';
+import { Ent } from '../../models/ent';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './report.component.html',
-  styleUrls: ['./report.component.css']
+  templateUrl: './overview.component.html',
+  styleUrls: ['./overview.component.css']
 })
-export class ReportComponent implements OnInit {
+export class OverviewComponent implements OnInit {
   chartOption: any;
   ds: Ent[];
 
@@ -19,19 +19,11 @@ export class ReportComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => { this.getDashboard(); });
     this.chartOption = {
-      title: {
-        text: '堆叠区域图'
-      },
       tooltip : {
         trigger: 'axis'
       },
       legend: {
         data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
-      },
-      toolbox: {
-        feature: {
-          saveAsImage: {}
-        }
       },
       grid: {
         left: '3%',
