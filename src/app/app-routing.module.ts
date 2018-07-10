@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '',
     data: {title: '首页'},
     children: [
-      {path: '', redirectTo: '/login', pathMatch: 'full'},
+      {path: '', redirectTo: '/report', pathMatch: 'full'},
       {path: 'accordion', loadChildren: './+accordion/accordion.module#AccordionModule', data: {title: 'Accordion'}},
       {path: 'alert', loadChildren: './+alert/alert.module#AlertModule', data: {title: 'Alert'}},
       {
@@ -48,7 +48,7 @@ const routes: Routes = [
       },
       {path: 'dropdown', loadChildren: './+dropdown/dropdown.module#DropdownModule', data: {title: 'Dropdown'}},
       {path: 'tabs', loadChildren: './+tabs/tabs.module#TabsModule', data: {title: 'Tabs'}},
-      {path: 'dashboard', data: {title: '报表'}, loadChildren: './dashboard/dashboard.module#DashboardModule'}
+      {path: 'report', data: {title: '报表', description: '选择店铺以查看营业情况'}, loadChildren: './report/report.module#ReportModule'}
     ]
   },
   {

@@ -10,7 +10,7 @@ import {AuthService} from '../../services';
   templateUrl: './header-inner.component.html'
 })
 export class HeaderInnerComponent implements OnInit {
-  public currentUser: UserToken;
+  public currentUser: UserToken = new UserToken();
 
   constructor(
     private router: Router,
@@ -27,6 +27,6 @@ export class HeaderInnerComponent implements OnInit {
     // this.authService.logout();
     localStorage.clear();
     alert('注销成功');
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 }

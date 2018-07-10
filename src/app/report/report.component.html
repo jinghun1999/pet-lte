@@ -1,0 +1,170 @@
+<ul>
+    <li *ngFor="let o of ds">
+      id: {{o.ID}}
+      name: {{o.FullName}}
+    </li>
+  </ul>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">集团营收概况（单位：元）</h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>11月</th>
+              <th>合计</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th>营收</th>
+              <th>2323</th>
+              <th>2323</th>
+            </tr>
+            <tr>
+              <th>银行流水</th>
+              <th>大道</th>
+              <th>大道</th>
+            </tr>
+            <tr>
+              <th>支出</th>
+              <th>
+                顶顶顶
+              </th>
+              <th></th>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">集团最近12个月收支（单位：元）</h3>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="chart">
+              <div id="lineLegend2" class="legend"></div>
+              <canvas id="salesChart2" style="height:180px"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title pull-left" style="padding: 5px 10px;">集团会员每月增量（单位：人）</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="chart">
+          <div id="lineLegend" class="legend"></div>
+          <div id="lineChart" echarts [options]="chartOption"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title pull-left" style="padding: 5px 10px;">会员充值（单位：元）</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="chart">
+          <div id="rechargesBarLegend" class="legend"></div>
+          <canvas id="rechargesBarChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title pull-left" style="padding: 5px 10px;">库存资产(单位：元)</h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <table id="StockList" class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>分院</th>
+            <th>资产（进价）</th>
+            <th>资产（售价）</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th><a href=""> @(g.City + " " + g.Name)</a></th>
+            <th>@Model.Stocks[g.Id].ToString("###,###")</th>
+            <th>@((Model.Stocks[g.Id] + 50000).ToString("###,###"))</th>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">库存资产损耗（单位：元）</h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="chart">
+          <div id="losseLegend" class="legend"></div>
+          <canvas id="losseChart"></canvas>
+        </div>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+</div>
+

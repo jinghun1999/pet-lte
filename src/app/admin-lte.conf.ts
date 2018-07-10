@@ -1,17 +1,17 @@
 export const adminLteConf = {
   skin: 'blue',
-  // isSidebarLeftCollapsed: false,
-  // isSidebarLeftExpandOnOver: false,
-  // isSidebarLeftMouseOver: false,
-  // isSidebarLeftMini: true,
-  // sidebarRightSkin: 'dark',
-  // isSidebarRightCollapsed: true,
-  // isSidebarRightOverContent: true,
-  // layout: 'normal',
+  isSidebarLeftCollapsed: false,
+  isSidebarLeftExpandOnOver: false,
+  isSidebarLeftMouseOver: false,
+  isSidebarLeftMini: true,
+  sidebarRightSkin: 'dark',
+  isSidebarRightCollapsed: true,
+  isSidebarRightOverContent: false,
+  layout: 'normal',
   sidebarLeftMenu: [
     {label: '功能选项', separator: true},
-    {label: '概况', route: 'dashboard', iconClasses: 'fa fa-dashboard'},
-    {label: '起始页面', route: '/login', iconClasses: 'fa fa-road', pullRights: [{text: 'New', classes: 'label pull-right bg-green'}]},
+    {label: '营收概况', route: 'dashboard', iconClasses: 'fa fa-dashboard'},
+    {label: '全部分店', route: '/login', iconClasses: 'fa fa-road', pullRights: [{text: 'New', classes: 'label pull-right bg-green'}]},
     {
       label: 'Layout', iconClasses: 'fa fa-th-list',
       children: [
