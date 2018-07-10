@@ -22,6 +22,14 @@ const routes: Routes = [
             data: {title: '分店', description: '选择店铺以查看营业情况'},
             loadChildren: './report/subs/subs.module#SubsModule',
             canActivate: [AuthGuard]
+          },
+          {
+            path: 'branch',
+            data: {title: '分店'},
+            children: [
+              {path: 'board/:id', data: {title: '概况'}, loadChildren: './report/branch/board/board.module#BoardModule'},
+              {path: 'member/:id', data: {title: '会员'}, loadChildren: './report/branch/member/member.module#MemberModule'}
+            ]
           }
         ]
       },

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DashboardService} from '../../services/dashboard.service';
+import { ReportService} from '../../services/report.service';
 import { Ent } from '../../models/ent';
 
 @Component({
@@ -13,7 +13,7 @@ export class OverviewComponent implements OnInit {
   ds: Ent[];
 
   constructor(
-    private dbService: DashboardService
+    private dbService: ReportService
   ) { }
 
   ngOnInit() {

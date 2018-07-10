@@ -2,33 +2,34 @@
   <div class="col-xs-12">
     <div class="box box-default">
       <div class="box-header with-border">
-        <h3 class="box-title">分院&nbsp;<small>左右滑动</small></h3>
+        <h3 class="box-title">分院&nbsp;<small>左右滑动</small>
+        </h3>
       </div>
       <div class="box-body" style="background-color:#c8c8a9">
 
-        <div class="BranchPlane" style="width:180px;float:left;margin-right:10px;cursor:pointer">
-        <div class="box box-widget widget-user">
-          <!-- Add the bg color to the header using any of the bg-* classes -->
-          <div class="widget-user-header bg-aqua-active">
-            <h3 class="widget-user-username">上海</h3>
-            <h5 class="widget-user-desc">上海第一人民医院</h5>
+        <a class="hospital-box" *ngFor="let hos of hospitals" routerLink="/report/branch/board/{{hos.ID}}">
+          <div class="box box-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username">{{hos.City?hos.City:'中国'}}</h3>
+              <h5 class="widget-user-desc">{{hos.FullName}}</h5>
+            </div>
+            <div class="box-footer">
+              <!-- /.row -->
+              <ul class="nav nav-stacked">
+                <li><a class="itembar title">院长：{{hos.ResponseMan}}</a></li>
+                <li><a class="itembar title">手机：{{hos.TelPhone}}</a></li>
+                <li><a class="itembar title">地址：{{hos.Address}}</a></li>
+                <li><a class="itembar title">本月目标：<b>￥{{hos.MonthTarget}}</b></a></li>
+                <li><a class="itembar title">本月完成：<b>￥{{hos.MonthSales}}</b></a></li>
+              </ul>
+            </div>
           </div>
-          <div class="box-footer">
-            <!-- /.row -->
-            <ul class="nav nav-stacked">
-              <li><a href="#" class="itembar title">@h.Address</a></li>
-              <li><a href="#" class="itembar title">@h.Manager</a></li>
-              <li><a href="#" class="itembar title">@h.Mobile</a></li>
-              <li><a href="#" class="itembar title">本月目标：39,000</a></li>
-              <li><a href="#" class="itembar title">本月完成：30,291</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+        </a>
 
+      </div>
     </div>
   </div>
-</div>
 </div>
 <div class="row">
   <div class="col-md-12">

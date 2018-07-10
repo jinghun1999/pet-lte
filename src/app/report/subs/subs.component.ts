@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Ent} from '../../models/ent';
+import {ReportService} from '../../services/report.service';
 
 @Component({
   selector: 'app-subs',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./subs.component.css']
 })
 export class SubsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  hospitals: Ent[];
+  constructor(private  rpService: ReportService) {
   }
 
+  ngOnInit() {
+    setTimeout(() => {
+      this.load();
+    });
+  }
+
+  load(): void {
+    this.rpService.getBranchEnt().subscribe(rs => {
+      this.hospitals = rs.Sign ? rs.Message as Ent[] : [];
+    });
+  }
 }
