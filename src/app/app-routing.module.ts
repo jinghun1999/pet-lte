@@ -1,14 +1,13 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-
-import {HomeComponent} from './home/home.component';
+import {AuthGuard} from './shared';
 
 const routes: Routes = [
   {
     path: '',
     data: {title: '首页'},
     children: [
-      {path: '', component: HomeComponent},
+      {path: '', redirectTo: '/login', pathMatch: 'full'},
       {path: 'accordion', loadChildren: './+accordion/accordion.module#AccordionModule', data: {title: 'Accordion'}},
       {path: 'alert', loadChildren: './+alert/alert.module#AlertModule', data: {title: 'Alert'}},
       {
@@ -40,6 +39,7 @@ const routes: Routes = [
       },
       {
         path: 'boxs', data: {title: 'Boxs'},
+        canActivate: [AuthGuard],
         children: [
           {path: 'box', loadChildren: './+boxs/box-default/box-default.module#BoxDefaultModule', data: {title: 'Box'}},
           {path: 'info-box', loadChildren: './+boxs/box-info/box-info.module#BoxInfoModule', data: {title: 'Info Box'}},
@@ -48,14 +48,14 @@ const routes: Routes = [
       },
       {path: 'dropdown', loadChildren: './+dropdown/dropdown.module#DropdownModule', data: {title: 'Dropdown'}},
       {path: 'tabs', loadChildren: './+tabs/tabs.module#TabsModule', data: {title: 'Tabs'}},
-      {path: 'dashboard', data: {title: '报表'}, loadChildren: './dashboard/dashboard.module#DashboardModule',}
+      {path: 'dashboard', data: {title: '报表'}, loadChildren: './dashboard/dashboard.module#DashboardModule'}
     ]
   },
   {
-    path: 'form', data: {title: 'Form',},
+    path: 'form', data: {title: 'Form'},
     children: [{path: 'input-text', loadChildren: './+form/input-text/input-text.module#InputTextModule', data: {title: 'Input Text'}}]
   },
-  {path: 'login', loadChildren: './+login/login.module#LoginModule', data: {customLayout: true}},
+  {path: 'login', loadChildren: './login/login.module#LoginModule', data: {customLayout: true}},
   {path: 'register', loadChildren: './+register/register.module#RegisterModule', data: {customLayout: true}},
 ];
 

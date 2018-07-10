@@ -10,10 +10,11 @@ export const adminLteConf = {
   // layout: 'normal',
   sidebarLeftMenu: [
     {label: '功能选项', separator: true},
-    {label: '概况', route: 'dashboard', iconClasses: 'fa fa-dashboard' },
-    {label: '起始页面', route: '/', iconClasses: 'fa fa-road', pullRights: [{text: 'New', classes: 'label pull-right bg-green'}]},
+    {label: '概况', route: 'dashboard', iconClasses: 'fa fa-dashboard'},
+    {label: '起始页面', route: '/login', iconClasses: 'fa fa-road', pullRights: [{text: 'New', classes: 'label pull-right bg-green'}]},
     {
-      label: 'Layout', iconClasses: 'fa fa-th-list', children: [
+      label: 'Layout', iconClasses: 'fa fa-th-list',
+      children: [
         {label: 'Configuration', route: 'layout/configuration'},
         {label: 'Custom', route: 'layout/custom'},
         {label: 'Header', route: 'layout/header'},
@@ -34,9 +35,8 @@ export const adminLteConf = {
     },
     {label: 'Dropdown', route: 'dropdown', iconClasses: 'fa fa-arrows-v'},
     {
-      label: 'Form', iconClasses: 'fa fa-files-o', children: [
-        {label: 'Input Text', route: 'form/input-text'}
-      ]
+      label: 'Form', iconClasses: 'fa fa-files-o',
+      children: [{label: 'Input Text', route: 'form/input-text'}]
     },
     {label: 'Tabs', route: 'tabs', iconClasses: 'fa fa-th'}
   ]
