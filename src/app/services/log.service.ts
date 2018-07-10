@@ -52,7 +52,9 @@ export class LogService {
           this.msg = `未知错误`;
       }
       this.print(`${operation}--状态码:${error.status},错误信息:${error.message}`);
-      this.router.navigateByUrl(`/login`);
+      if (error.status === 401) {
+        this.router.navigateByUrl(`/login`);
+      }
       return of(result as T);
     };
   }

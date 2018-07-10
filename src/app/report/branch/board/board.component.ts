@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {BranchService} from '../../../services';
+import {Result} from '../../../models';
 
 @Component({
   selector: 'app-board',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
+  id: string;
+  data: Result;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private branchService: BranchService) {
   }
 
+  ngOnInit(): void {
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    setTimeout(() => this.getBoard());
+  }
+
+  getBoard(): void {
+    this.branchService.getBoard(this.id)
+      .subscribe(res => this.data = res);
+  }
 }
