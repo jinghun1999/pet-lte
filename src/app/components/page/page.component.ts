@@ -12,9 +12,9 @@ export class PageComponent implements OnInit {
   @Input() currentPage: number;
   @Input() pageLinkSize: number;
   @Output() onPageChange = new EventEmitter();
-  private pageCount: number;
+  public pageCount: number;
   public pageArr: Array<number> = [];
-  private pageValidation: any = {isFirst: false, isLast: false};
+  public pageValidation: any = {isFirst: false, isLast: false};
 
   constructor() {
   }

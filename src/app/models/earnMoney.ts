@@ -1,5 +1,4 @@
 export class EarnMoney {
-  ID: string;
   CountDate: string;
   TotalNum: number;
   SellTotal: number;
@@ -17,11 +16,4 @@ export class EarnMoney {
   Service: number;
   Vaccine: number;
   MedicOther: number;
-  CreatedBy: string;
-  CreatedOn: string;
-  ModifiedBy: string;
-  ModifiedOn: string;
-  EntID: string;
-  CreatedByID: string;
-  ModifiedByID: string;
 }

@@ -1,6 +1,6 @@
-<ul class="nav nav-pills hidden">
-  <li role="presentation" class="active"><a href="javascript:;">店铺概况</a></li>
-  <li role="presentation"><a routerLink="/report/branch/member/{{id}}">会员</a></li>
+<ul class="nav nav-pills">
+  <li role="presentation" class="active"><a routerLink="./">店铺概况</a></li>
+  <li role="presentation"><a routerLink="/report/branch/stock/{{id}}">库存</a></li>
 </ul>
 <div class="row">
   <div class="col-md-3 col-sm-6 col-xs-12">
@@ -89,7 +89,51 @@
     </div>
   </div>
 </div>
+
 <div class="row">
+  <div class="col-xs-12">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">单日营收明细记录</h3>
+      </div>
+      <div class="box-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>日期</th>
+              <th>化验</th>
+              <th>影像</th>
+              <th>处方</th>
+              <th>寄养</th>
+              <th>住院</th>
+              <th>服务</th>
+              <th>疫苗</th>
+              <th>直接销售</th>
+              <th>销售总额</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of list">
+              <td>{{item.CountDate|date:'yyyy-MM-dd'}}</td>
+              <td>{{item.ChemicalExam|number}}</td>
+              <td>{{item.VideoExam|number}}</td>
+              <td>{{item.Prescription|number}}</td>
+              <td>{{item.Foster|number}}</td>
+              <td>{{item.Hospital|number}}</td>
+              <td>{{item.Service|number}}</td>
+              <td>{{item.Vaccine}}</td>
+              <td>{{item.DirectSell|number}}</td>
+              <td>{{item.SellTotal|number}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row hidden">
   <div class="col-md-12">
     <div class="box box-info">
       <div class="box-header with-border">

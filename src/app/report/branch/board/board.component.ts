@@ -30,7 +30,6 @@ export class BoardComponent implements OnInit {
     setTimeout(() => {
       this.getBoard();
       this.getEarn();
-      this.getStock();
     });
   }
 
@@ -43,19 +42,11 @@ export class BoardComponent implements OnInit {
   }
 
   getEarn(): void {
-    this.branchService.getEarnPager(1).subscribe((res) => {
+    this.branchService.getEarnPager(1, 50).subscribe((res) => {
       if (res.Sign) {
         this.pager = res.Message as Pager;
         this.list = this.pager.Rows as EarnMoney[];
         this._total = this.pager.RowCount;
-      }
-    });
-  }
-  getStock(): void {
-    this.branchService.getStockPager(1).subscribe((res) => {
-      if (res.Sign) {
-        this.pager = res.Message as Pager;
-        this.list = this.pager.Rows as EarnMoney[];
       }
     });
   }
