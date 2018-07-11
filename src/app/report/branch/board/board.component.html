@@ -60,9 +60,9 @@
             <tbody>
             <tr *ngFor="let item of ds">
               <td>{{item.Month}}</td>
-              <td>{{item.Income}}</td>
-              <td>{{item.Expenses}}</td>
-              <td>{{item.BankFlow}}</td>
+              <td>{{item.Income|number}}</td>
+              <td>{{item.Expenses|number}}</td>
+              <td>{{item.BankFlow|number}}</td>
             </tr>
             </tbody>
           </table>
@@ -81,8 +81,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="chart">
-              <div id="lineLegend2" class="legend"></div>
-              <canvas id="salesChart2" style="height: 180px;"></canvas>
+              <div echarts="" [options]="chartOption" style="height: 250px;"></div>
             </div>
           </div>
         </div>
@@ -90,7 +89,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row hidden">
   <div class="col-md-12">
     <div class="box box-info">
       <div class="box-header with-border">
@@ -157,7 +156,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row hidden">
   <div class="col-md-6">
     <div class="box box-info">
       <div class="box-header with-border">

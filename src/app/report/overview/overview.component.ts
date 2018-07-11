@@ -19,14 +19,30 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.getDashboard();
+      this.load();
+    });
+  }
+
+  load(): void {
+    this.dbService.getGroupMonth().subscribe(rs => {
+      this.ds = rs.Sign ? rs.Message as GroupMonthRevenue[] : [];
+      this.loadChart();
+    });
+  }
+  loadChart(): void {
+    const income = [], expenses = [], bankflow = [], months = [];
+    this.ds.forEach((item, index) => {
+      income.push(item.Income);
+      expenses.push(item.Expenses);
+      bankflow.push(item.BankFlow);
+      months.push(item.Month);
     });
     this.chartOption = {
       tooltip: {
         trigger: 'axis'
       },
       legend: {
-        data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+        data: ['营收', '支出', '银行流水']
       },
       grid: {
         left: '3%',
@@ -38,7 +54,7 @@ export class OverviewComponent implements OnInit {
         {
           type: 'category',
           boundaryGap: false,
-          data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+          data: months
         }
       ],
       yAxis: [
@@ -48,53 +64,27 @@ export class OverviewComponent implements OnInit {
       ],
       series: [
         {
-          name: '邮件营销',
+          name: '营收',
           type: 'line',
           stack: '总量',
           areaStyle: {normal: {}},
-          data: [120, 132, 101, 134, 90, 230, 210]
+          data: income
         },
         {
-          name: '联盟广告',
+          name: '支出',
           type: 'line',
           stack: '总量',
           areaStyle: {normal: {}},
-          data: [220, 182, 191, 234, 290, 330, 310]
+          data: expenses
         },
         {
-          name: '视频广告',
+          name: '银行流水',
           type: 'line',
           stack: '总量',
           areaStyle: {normal: {}},
-          data: [150, 232, 201, 154, 190, 330, 410]
-        },
-        {
-          name: '直接访问',
-          type: 'line',
-          stack: '总量',
-          areaStyle: {normal: {}},
-          data: [320, 332, 301, 334, 390, 330, 320]
-        },
-        {
-          name: '搜索引擎',
-          type: 'line',
-          stack: '总量',
-          label: {
-            normal: {
-              show: true,
-              position: 'top'
-            }
-          },
-          areaStyle: {normal: {}},
-          data: [820, 932, 901, 934, 1290, 1330, 1320]
+          data: bankflow
         }
       ]
     };
-  }
-
-  getDashboard(): void {
-    this.dbService.getGroupMonth().subscribe(rs => {
-      this.ds = rs.Sign ? rs.Message as GroupMonthRevenue[] : [];
-    });
   }
 }

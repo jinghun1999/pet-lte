@@ -18,12 +18,30 @@
             <tbody>
             <tr *ngFor="let item of ds">
               <td>{{item.Month}}</td>
-              <td>{{item.Income}}</td>
-              <td>{{item.Expenses}}</td>
-              <td>{{item.BankFlow}}</td>
+              <td>{{item.Income|number}}</td>
+              <td>{{item.Expenses|number}}</td>
+              <td>{{item.BankFlow|number}}</td>
             </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">最近12个月收支图表</h3>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="chart">
+              <div echarts="" [options]="chartOption" style="height: 250px;"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -24,8 +24,8 @@
           <tr *ngFor="let g of list">
             <td>{{g.GestName}}</td>
             <td>{{g.MobilePhone}}</td>
-            <td>{{g.CreatedOn}}</td>
-            <td>{{g.VIPAccount}}</td>
+            <td>{{g.CreatedOn | date:'yyyy-MM-dd HH:mm'}}</td>
+            <td>{{g.VIPAccount|number}}</td>
           </tr>
           </tbody>
         </table>
