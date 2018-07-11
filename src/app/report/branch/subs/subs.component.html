@@ -1,13 +1,8 @@
 <div class="row">
-  <div class="col-xs-12">
-    <div class="box box-default">
-      <div class="box-header with-border">
-        <h3 class="box-title">分院&nbsp;<small>左右滑动</small>
-        </h3>
-      </div>
-      <div class="box-body" style="background-color:#c8c8a9">
+  <div class="">
 
-        <a class="hospital-box" *ngFor="let hos of hospitals" routerLink="/report/branch/board/{{hos.ID}}">
+
+        <a class="col-xs-12 col-md-6 col-lg-3" *ngFor="let hos of hospitals" routerLink="/report/branch/board/{{hos.ID}}">
           <div class="box box-widget widget-user">
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header bg-aqua-active">
@@ -27,8 +22,6 @@
           </div>
         </a>
 
-      </div>
-    </div>
   </div>
 </div>
 <div class="row hidden">

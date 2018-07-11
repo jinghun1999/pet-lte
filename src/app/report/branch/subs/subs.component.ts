@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Ent} from '../../models/ent';
-import {ReportService} from '../../services/report.service';
+import {Ent} from '../../../models/ent';
+import {ReportService} from '../../../services/report.service';
 
 @Component({
   selector: 'app-subs',

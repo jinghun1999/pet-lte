@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: '/report/overview', pathMatch: 'full'},
       {
-        path: 'report', data: {title: '报表分析'},
+        path: 'report', data: {title: '数据分析'},
         children: [
           {
             path: 'overview',
@@ -19,15 +19,14 @@ const routes: Routes = [
           },
           {path: 'guests', data: {title: '集团会员'}, loadChildren: './report/guest/guest.module#GuestModule'},
           {
-            path: 'subs',
-            data: {title: '分店', description: '选择店铺以查看营业情况'},
-            loadChildren: './report/subs/subs.module#SubsModule',
-            canActivate: [AuthGuard]
-          },
-          {
             path: 'branch',
-            data: {title: '分店'},
+            data: {title: '下属连锁'},
             children: [
+              {
+                path: 'subs',
+                data: {title: '所有分店', description: '选择店铺以查看营业情况'},
+                loadChildren: './report/branch/subs/subs.module#SubsModule'
+              },
               {path: 'board/:id', data: {title: '分店概况'}, loadChildren: './report/branch/board/board.module#BoardModule'}
             ]
           }
