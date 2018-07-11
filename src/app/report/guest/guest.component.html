@@ -29,6 +29,10 @@
           </tr>
           </tbody>
         </table>
+        <app-page [totalRecords]="226"
+              [rows]="size"
+              [currentPage]="1"
+              (onPageChange)="getGuestPager($event)"></app-page>
       </div>
     </div>
   </div>
@@ -75,3 +79,4 @@
     </div>
   </div>
 </div>
+

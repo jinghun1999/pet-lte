@@ -19,7 +19,8 @@ export class ReportService {
     return this.http.get<Result>(environment.baseUrl + '/report/getBranchEnterprise');
   }
 
-  getMembers(): Observable<Result> {
-    return this.http.get<Result>(environment.baseUrl + '/reportBranch/getGuest');
+  getMembers(page: number, size: number): Observable<Result> {
+    debugger;
+    return this.http.get<Result>(environment.baseUrl + '/reportBranch/getGuestPager?page=' + page + '&size=' + size);
   }
 }

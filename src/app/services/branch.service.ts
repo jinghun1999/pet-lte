@@ -24,4 +24,11 @@ export class BranchService {
   getMonthRevenue(id: string): Observable<Result> {
     return this.http.get<Result>(environment.baseUrl + '/reportBranch/getMonthTotalRevenue?id=' + id);
   }
+  // 获取分店每天营收明细
+  getEarnPager(page: number): Observable<Result> {
+    return this.http.get<Result>(environment.baseUrl + '/reportBranch/getCountTotalEarnMoney?size=999&page=' + page);
+  }
+  getStockPager(page: number): Observable<Result> {
+    return this.http.get<Result>(environment.baseUrl + '/reportBranch/getStockList?size=999&page=' + page);
+  }
 }

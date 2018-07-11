@@ -27,7 +27,8 @@ const routes: Routes = [
                 data: {title: '所有分店', description: '选择店铺以查看营业情况'},
                 loadChildren: './report/branch/subs/subs.module#SubsModule'
               },
-              {path: 'board/:id', data: {title: '分店概况'}, loadChildren: './report/branch/board/board.module#BoardModule'}
+              {path: 'board/:id', data: {title: '分店概况'}, loadChildren: './report/branch/board/board.module#BoardModule'},
+              {path: 'stock/:id', data: {title: '库存信息'}, loadChildren: './report/branch/stock/stock.module#StockModule'}
             ]
           }
         ]

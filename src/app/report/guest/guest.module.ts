@@ -1,13 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { GuestRoutingModule } from './guest-routing.module';
-import { GuestComponent } from './guest.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {GuestRoutingModule} from './guest-routing.module';
+import {GuestComponent} from './guest.component';
+import {PageModule} from '../../components/page/page.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    GuestRoutingModule
+    GuestRoutingModule,
+    PageModule
   ],
   declarations: [GuestComponent]
 })
-export class GuestModule { }
+export class GuestModule {
+}

@@ -15,8 +15,6 @@ import {LoadingPageModule, MaterialBarModule} from 'angular-loading-page';
 import {AuthGuard, httpInterceptor} from './shared';
 import {AuthService} from './services';
 
-// import { DashboardComponent } from './dashboard/dashboard.component';
-
 
 @NgModule({
   imports: [
@@ -24,7 +22,8 @@ import {AuthService} from './services';
     AppRoutingModule,
     CoreModule,
     LayoutModule.forRoot(adminLteConf),
-    LoadingPageModule, MaterialBarModule,
+    LoadingPageModule,
+    MaterialBarModule,
   ],
   declarations: [
     AppComponent,

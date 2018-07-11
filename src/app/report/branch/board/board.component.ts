@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {BranchService} from '../../../services';
-import {GroupMonthRevenue} from '../../../models';
+import {GroupMonthRevenue, GuestModel, Pager} from '../../../models';
+import {EarnMoney} from '../../../models/earnMoney';
 
 @Component({
   selector: 'app-board',
@@ -10,8 +11,14 @@ import {GroupMonthRevenue} from '../../../models';
 })
 export class BoardComponent implements OnInit {
   id: string;
+  pager: Pager;
   ds: GroupMonthRevenue[];
+  list: EarnMoney[];
   chartOption: any;
+
+  public _total = 0;  // 总数据条数
+  public size = 15; // 每页数条数
+  public page = 1; // 当前页码
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -20,7 +27,11 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    setTimeout(() => this.getBoard());
+    setTimeout(() => {
+      this.getBoard();
+      this.getEarn();
+      this.getStock();
+    });
   }
 
   getBoard(): void {
@@ -29,6 +40,24 @@ export class BoardComponent implements OnInit {
         this.ds = res.Sign ? res.Message as GroupMonthRevenue[] : [];
         this.loadChart();
       });
+  }
+
+  getEarn(): void {
+    this.branchService.getEarnPager(1).subscribe((res) => {
+      if (res.Sign) {
+        this.pager = res.Message as Pager;
+        this.list = this.pager.Rows as EarnMoney[];
+        this._total = this.pager.RowCount;
+      }
+    });
+  }
+  getStock(): void {
+    this.branchService.getStockPager(1).subscribe((res) => {
+      if (res.Sign) {
+        this.pager = res.Message as Pager;
+        this.list = this.pager.Rows as EarnMoney[];
+      }
+    });
   }
 
   loadChart(): void {
