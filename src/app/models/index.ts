@@ -9,3 +9,5 @@ export * from './pager';
 export * from './earnMoney';
 export * from './stock';
 export * from './stockSum';
+
+export * from './revenueItem'; // 营收明细

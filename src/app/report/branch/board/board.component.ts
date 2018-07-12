@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ModalDirective} from 'ngx-bootstrap/modal';
 import {ActivatedRoute} from '@angular/router';
+
 import {BranchService} from '../../../services';
-import {GroupMonthRevenue, GuestModel, Pager} from '../../../models';
-import {EarnMoney} from '../../../models/earnMoney';
+import {GroupMonthRevenue, EarnMoney, RevenueItem, Pager} from '../../../models';
 
 @Component({
   selector: 'app-board',
@@ -16,9 +17,14 @@ export class BoardComponent implements OnInit {
   list: EarnMoney[];
   chartOption: any;
 
-  public _total = 0;  // 总数据条数
-  public size = 15; // 每页数条数
-  public page = 1; // 当前页码
+  @ViewChild(ModalDirective) modal: ModalDirective;
+  currentDate: string;
+  detail_list: RevenueItem[] = [];
+
+  public totalItems = 0;  // 总数据条数
+  public pageSize = 10; // 每页数条数
+  public currentPage = 1; // 当前页码
+  public currentPage2 = 1;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,7 +35,7 @@ export class BoardComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     setTimeout(() => {
       this.getBoard();
-      this.getEarn();
+      this.getEarnPager();
     });
   }
 
@@ -41,14 +47,19 @@ export class BoardComponent implements OnInit {
       });
   }
 
-  getEarn(): void {
-    this.branchService.getEarnPager(1, 50).subscribe((res) => {
+  getEarnPager(): void {
+    this.branchService.getEarnPager(this.currentPage, this.pageSize).subscribe((res) => {
       if (res.Sign) {
         this.pager = res.Message as Pager;
         this.list = this.pager.Rows as EarnMoney[];
-        this._total = this.pager.RowCount;
+        this.totalItems = this.pager.RowCount;
       }
     });
+  }
+
+  pageChanged(event: any): void {
+    this.currentPage = event.page;
+    this.getEarnPager();
   }
 
   loadChart(): void {
@@ -108,5 +119,24 @@ export class BoardComponent implements OnInit {
         }
       ]
     };
+  }
+
+  showModal(d: string) {
+    this.currentDate = d;
+    this.detail_list.splice(0, this.detail_list.length);
+    for (let i = 1; i <= 10; i++) {
+      this.detail_list.push({GuestName: '张三', ItemName: '狂犬疫苗接种', ItemCount: 2, Price: 304, TotalPrice: 608, CreatedOn: '2018-6-4 19:34'});
+    }
+    this.modal.show();
+  }
+
+  handler(type: string, $event: ModalDirective) {
+    if (type === 'onHide') {
+      this.detail_list = [];
+    }
+  }
+
+  detailPageChanged($event): void {
+
   }
 }

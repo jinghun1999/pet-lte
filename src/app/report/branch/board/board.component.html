@@ -97,42 +97,52 @@
         <h3 class="box-title">单日营收明细记录</h3>
       </div>
       <div class="box-body">
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover">
-            <thead>
-            <tr>
-              <th>日期</th>
-              <th>化验</th>
-              <th>影像</th>
-              <th>处方</th>
-              <th>寄养</th>
-              <th>住院</th>
-              <th>服务</th>
-              <th>疫苗</th>
-              <th>直接销售</th>
-              <th>销售总额</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let item of list">
-              <td>{{item.CountDate|date:'yyyy-MM-dd'}}</td>
-              <td>{{item.ChemicalExam|number}}</td>
-              <td>{{item.VideoExam|number}}</td>
-              <td>{{item.Prescription|number}}</td>
-              <td>{{item.Foster|number}}</td>
-              <td>{{item.Hospital|number}}</td>
-              <td>{{item.Service|number}}</td>
-              <td>{{item.Vaccine}}</td>
-              <td>{{item.DirectSell|number}}</td>
-              <td>{{item.SellTotal|number}}</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>日期</th>
+            <th>化验</th>
+            <th>影像</th>
+            <th>处方</th>
+            <th>寄养</th>
+            <th>住院</th>
+            <th>服务</th>
+            <th>疫苗</th>
+            <th>直接销售</th>
+            <th>销售总额</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of list">
+            <td><a routerLink="./" (click)="showModal(item.CountDate)">{{item.CountDate|date:'yyyy-MM-dd'}}</a></td>
+            <td>{{item.ChemicalExam|number}}</td>
+            <td>{{item.VideoExam|number}}</td>
+            <td>{{item.Prescription|number}}</td>
+            <td>{{item.Foster|number}}</td>
+            <td>{{item.Hospital|number}}</td>
+            <td>{{item.Service|number}}</td>
+            <td>{{item.Vaccine}}</td>
+            <td>{{item.DirectSell|number}}</td>
+            <td>{{item.SellTotal|number}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <pagination
+          [totalItems]="totalItems"
+          [(ngModel)]="currentPage"
+          [itemsPerPage]="pageSize"
+          (pageChanged)="pageChanged($event)"
+          [previousText]="'上一页'"
+          [nextText]="'下一页'"
+          [firstText]="'首页'"
+          [lastText]="'尾页'"
+          [maxSize]="10">
+        </pagination>
       </div>
     </div>
   </div>
 </div>
+
 <div class="row hidden">
   <div class="col-md-12">
     <div class="box box-info">
@@ -340,10 +350,12 @@
 
         <div class="box box-widget widget-user">
           <!-- Add the bg color to the header using any of the bg-* classes -->
-          <div class="widget-user-header bg-black" style="background: url('https://adminlte.io/themes/AdminLTE/dist/img/photo1.png') center center;">
+          <div class="widget-user-header bg-black"
+               style="background: url('https://adminlte.io/themes/AdminLTE/dist/img/photo1.png') center center;">
           </div>
           <div class="widget-user-image">
-            <img class="img-circle" src="https://adminlte.io/themes/AdminLTE//dist/img/user3-128x128.jpg" alt="User Avatar">
+            <img class="img-circle" src="https://adminlte.io/themes/AdminLTE//dist/img/user3-128x128.jpg"
+                 alt="User Avatar">
           </div>
           <div class="box-footer no-padding">
             <ul class="nav nav-stacked">
@@ -364,4 +376,57 @@
     <!-- /.modal-content -->
   </div>
   <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" bsModal #modal="bs-modal"
+     tabindex="-1" role="dialog" aria-labelledby="dialog-events-name"
+     (onShow)="handler('onShow', $event)"
+     (onShown)="handler('onShown', $event)"
+     (onHide)="handler('onHide', $event)"
+     (onHidden)="handler('onHidden', $event)">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-events-name" class="modal-title pull-left">{{currentDate|date:'yyyy-MM-dd'}}营收明细</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-condensed table-hover">
+          <thead>
+            <tr>
+              <th>会员</th>
+              <th>项目</th>
+              <th>数量</th>
+              <th>单价</th>
+              <th>总金额</th>
+              <th>时间</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of detail_list">
+              <td>{{item.GuestName}}</td>
+              <td>{{item.ItemName}}</td>
+              <td>{{item.ItemCount}}</td>
+              <td>{{item.Price}}</td>
+              <td>{{item.TotalPrice}}</td>
+              <td>{{item.CreatedOn}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination
+          [totalItems]="30"
+          [(ngModel)]="currentPage2"
+          [itemsPerPage]="10"
+          (pageChanged)="detailPageChanged($event)"
+          [previousText]="'上一页'"
+          [nextText]="'下一页'"
+          [firstText]="'首页'"
+          [lastText]="'尾页'"
+          [maxSize]="10">
+        </pagination>
+      </div>
+    </div>
+  </div>
 </div>

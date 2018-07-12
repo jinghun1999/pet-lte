@@ -1,1 +1,3 @@
-export * from './page/page.component';
+export class UC {
+  id: string;
+}

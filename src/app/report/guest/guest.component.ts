@@ -13,9 +13,9 @@ export class GuestComponent implements OnInit {
   guestPager: Pager;
   list: GuestModel[];
 
-  public _total = 0;  // 总数据条数
-  public size = 15; // 每页数条数
-  // public page = 1; // 当前页码
+  public totalItems = 0;  // 总数据条数
+  public pageSize = 10; // 每页数条数
+  public currentPage = 1; // 当前页码
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,23 +24,22 @@ export class GuestComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._total = 206;
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    setTimeout(() => this.getGuestPager(1));
+    setTimeout(() => this.getGuestPager());
   }
 
-  getGuestPager(page): void {
-    this.reportService.getMembers(page, this.size).subscribe(res => {
+  getGuestPager(): void {
+    this.reportService.getMembers(this.currentPage, this.pageSize).subscribe(res => {
       if (res.Sign) {
         this.guestPager = res.Message as Pager;
         this.list = this.guestPager.Rows as GuestModel[];
-        this._total = this.guestPager.RowCount;
+        this.totalItems = this.guestPager.RowCount;
       }
     });
   }
 
-  pageChanged(page): void {
-    debugger;
-    this.getGuestPager(page.page);
+  pageChanged(event: any): void {
+    this.currentPage = event.page;
+    this.getGuestPager();
   }
 }

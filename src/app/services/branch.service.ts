@@ -30,8 +30,8 @@ export class BranchService {
     return this.http.get<Result>(environment.baseUrl + '/reportBranch/getCountTotalEarnMoney?size=' + size + '&page=' + page);
   }
 
-  getStockPager(page: number, size: number): Observable<Result> {
-    return this.http.get<Result>(environment.baseUrl + '/reportBranch/getStockList?size=' + size + '&page=' + page);
+  getStockPager(page: number, size: number, kw: string): Observable<Result> {
+    return this.http.get<Result>(environment.baseUrl + '/reportBranch/getStockPager?size=' + size + '&page=' + page + '&kw=' + kw);
   }
 
   getStockSum(): Observable<Result> {

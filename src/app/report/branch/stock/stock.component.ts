@@ -10,14 +10,15 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./stock.component.css']
 })
 export class StockComponent implements OnInit {
+  kw = '';
   id: string;
   pager: Pager;
   list: StockModel[];
   sums: StockSum[];
 
-  public _total = 0;  // 总数据条数
-  public size = 15; // 每页数条数
-  public page = 1; // 当前页码
+  public totalItems = 0;  // 总数据条数
+  public pageSize = 10; // 每页数条数
+  public currentPage = 1; // 当前页码
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -27,16 +28,17 @@ export class StockComponent implements OnInit {
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     setTimeout(() => {
-      this.getStock();
       this.getStockSum();
+      this.getStockPager();
     });
   }
 
-  getStock(): void {
-    this.branchService.getStockPager(1, 105).subscribe((res) => {
+  getStockPager(): void {
+    this.branchService.getStockPager(this.currentPage, this.pageSize, this.kw).subscribe((res) => {
       if (res.Sign) {
         this.pager = res.Message as Pager;
         this.list = this.pager.Rows as StockModel[];
+        this.totalItems = this.pager.RowCount;
       }
     });
   }
@@ -47,5 +49,14 @@ export class StockComponent implements OnInit {
         this.sums = res.Message as StockSum[];
       }
     });
+  }
+
+  pageChanged(event: any): void {
+    this.currentPage = event.page;
+    this.getStockPager();
+  }
+
+  search(): void {
+    this.getStockPager();
   }
 }

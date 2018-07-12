@@ -29,10 +29,17 @@
           </tr>
           </tbody>
         </table>
-        <app-page [totalRecords]="_total"
-              [rows]="15"
-              [currentPage]="1"
-              (onPageChange)="pageChanged($event)"></app-page>
+        <pagination
+          [totalItems]="totalItems"
+          [(ngModel)]="currentPage"
+          [itemsPerPage]="pageSize"
+          (pageChanged)="pageChanged($event)"
+          [previousText]="'上一页'"
+          [nextText]="'下一页'"
+          [firstText]="'首页'"
+          [lastText]="'尾页'"
+          [maxSize]="10">
+        </pagination>
       </div>
     </div>
   </div>
