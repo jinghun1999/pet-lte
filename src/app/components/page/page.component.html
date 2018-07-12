@@ -5,7 +5,7 @@
     <li (click)="changePage('pre')" [ngClass]="{'disabled': pageValidation.isFirst}"><a href="javascript:;"><i
       class="fa fa-angle-left"></i> </a></li>
     <li (click)="changePage(page)" *ngFor="let page of pageArr" [ngClass]="{'active': page == currentPage}"><a
-      href="javascript:;">{{page + 1}}</a></li>
+      href="javascript:;">{{page}}</a></li>
     <li (click)="changePage('next')" [ngClass]="{'disabled': pageValidation.isLast}"><a href="javascript:;"><i
       class="fa fa-angle-right"></i></a>
     </li>

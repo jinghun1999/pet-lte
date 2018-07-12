@@ -39,7 +39,7 @@ export class PageComponent implements OnInit {
   changePage(actionKey: string) {
     this.getCurrentPage(actionKey);
     this.getVisiblePageArr();
-    let data = {
+    const data = {
       first: this.currentPage * this.rows,
       rows: this.rows,
       page: this.currentPage,
@@ -50,29 +50,29 @@ export class PageComponent implements OnInit {
 
   getVisiblePageArr() {
     this.pageArr = [];
-    let visiblePage = Math.min(this.pageLinkSize, this.pageCount);
+    const visiblePage = Math.min(this.pageLinkSize, this.pageCount);
     let start = Math.max(0, Math.ceil(this.currentPage - visiblePage / 2));
-// When page next to the end
+    // When page next to the end
     if (this.currentPage >= Math.floor(this.pageCount - visiblePage / 2)) {
       start = Math.max(0, this.pageCount - this.pageLinkSize);
     }
-    let end = start + visiblePage - 1;
-    for (var i = start; i <= end; i++) {
+    const end = start + visiblePage - 1;
+    for (let i = start; i <= end; i++) {
       this.pageArr.push(i);
     }
   }
 
   getCurrentPage(actionKey: string) {
-    if (actionKey == 'first') {
+    if (actionKey === 'first') {
       this.currentPage = 0;
-    } else if (actionKey == 'last') {
+    } else if (actionKey === 'last') {
       this.currentPage = this.pageCount - 1;
-    } else if (actionKey == 'pre') {
+    } else if (actionKey === 'pre') {
       if (this.currentPage <= 0) {
         return;
       }
       this.currentPage = this.currentPage - 1;
-    } else if (actionKey == 'next') {
+    } else if (actionKey === 'next') {
       if (this.currentPage >= this.pageCount - 1) {
         return;
       }
@@ -85,9 +85,9 @@ export class PageComponent implements OnInit {
   }
 
   validateIfFirstLast() {
-    if (this.currentPage == 0) {
+    if (this.currentPage === 0) {
       this.pageValidation = {isFirst: true, isLast: false};
-    } else if (this.currentPage == this.pageCount - 1) {
+    } else if (this.currentPage === this.pageCount - 1) {
       this.pageValidation = {isFirst: false, isLast: true};
     } else {
       this.pageValidation = {isFirst: false, isLast: false};

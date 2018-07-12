@@ -29,10 +29,10 @@
           </tr>
           </tbody>
         </table>
-        <app-page [totalRecords]="226"
-              [rows]="size"
+        <app-page [totalRecords]="_total"
+              [rows]="15"
               [currentPage]="1"
-              (onPageChange)="getGuestPager($event)"></app-page>
+              (onPageChange)="pageChanged($event)"></app-page>
       </div>
     </div>
   </div>
