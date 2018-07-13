@@ -9,7 +9,8 @@ import {environment} from '../../../environments/environment';
 })
 export class ReportBranchService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
 
   // 分店明细数据
@@ -35,5 +36,11 @@ export class ReportBranchService {
   // 仓库汇总
   getWarehouseSum(): Observable<Result> {
     return this.http.get<Result>(environment.baseUrl + '/reportBranch/getWarehouseSum');
+  }
+
+  // 库存明细筛选
+  getWarehousePager(page: number, kw: string, war: string): Observable<Result> {
+    const url = `${environment.baseUrl}/reportBranch/getStockDetail?war=${war}&kw=${kw}&page=${page}&size=12`;
+    return this.http.get<Result>(url);
   }
 }

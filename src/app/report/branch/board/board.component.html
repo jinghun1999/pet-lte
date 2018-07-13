@@ -105,7 +105,7 @@
   <div class="col-xs-12">
     <div class="box box-info">
       <div class="box-header with-border">
-        <h3 class="box-title">单日营收明细记录</h3>
+        <h3 class="box-title">单日项目营收汇总</h3>
       </div>
       <div class="box-body">
         <table class="table table-bordered table-hover">
@@ -125,7 +125,8 @@
           </thead>
           <tbody>
           <tr *ngFor="let item of list">
-            <td><a routerLink="./" (click)="showModal(item.CountDate)">{{item.CountDate|date:'yyyy-MM-dd'}}</a></td>
+            <td><a routerLink="./" (click)="showModal(item.CountDate)" class="btn btn-default">{{item.CountDate|date:'yyyy-MM-dd'}} <i class="fa fa-external-link"></i></a>
+            </td>
             <td>{{item.ChemicalExam|number}}</td>
             <td>{{item.VideoExam|number}}</td>
             <td>{{item.Prescription|number}}</td>
@@ -406,24 +407,24 @@
       <div class="modal-body">
         <table class="table table-condensed table-hover">
           <thead>
-            <tr>
-              <th>会员</th>
-              <th>项目</th>
-              <th>数量</th>
-              <th>单价</th>
-              <th>总金额</th>
-              <th>时间</th>
-            </tr>
+          <tr>
+            <th>会员</th>
+            <th>项目</th>
+            <th>数量</th>
+            <th>单价</th>
+            <th>总金额</th>
+            <th>时间</th>
+          </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of detail_list">
-              <td>{{item.GuestName}}</td>
-              <td>{{item.ItemName}}</td>
-              <td>{{item.ItemCount}}</td>
-              <td>{{item.Price}}</td>
-              <td>{{item.TotalPrice}}</td>
-              <td>{{item.CreatedOn}}</td>
-            </tr>
+          <tr *ngFor="let item of detail_list">
+            <td>{{item.GuestName}}</td>
+            <td>{{item.ItemName}}</td>
+            <td>{{item.ItemCount}}</td>
+            <td>{{item.Price}}</td>
+            <td>{{item.TotalPrice}}</td>
+            <td>{{item.CreatedOn}}</td>
+          </tr>
           </tbody>
         </table>
         <pagination

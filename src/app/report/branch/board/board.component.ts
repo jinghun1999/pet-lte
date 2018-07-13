@@ -3,7 +3,7 @@ import {ModalDirective} from 'ngx-bootstrap/modal';
 import {ActivatedRoute} from '@angular/router';
 
 import {ReportBranchService} from '../../../shared/services';
-import {GroupMonthRevenue, EarnMoney, RevenueItem, Pager, EntModel} from '../../../models';
+import {GroupMonthRevenue, EarnMoney, RevenueItem, PagerResult, EntModel} from '../../../models';
 
 @Component({
   selector: 'app-board',
@@ -12,7 +12,7 @@ import {GroupMonthRevenue, EarnMoney, RevenueItem, Pager, EntModel} from '../../
 })
 export class BoardComponent implements OnInit {
   id: string;
-  pager: Pager;
+  pager: PagerResult;
   ds: GroupMonthRevenue[];
   ent = new EntModel();
   list: EarnMoney[];
@@ -52,7 +52,7 @@ export class BoardComponent implements OnInit {
   getEarnPager(): void {
     this.branchService.getEarnPager(this.currentPage, this.pageSize).subscribe((res) => {
       if (res.Sign) {
-        this.pager = res.Message as Pager;
+        this.pager = res.Message as PagerResult;
         this.list = this.pager.Rows as EarnMoney[];
         this.totalItems = this.pager.RowCount;
       }
@@ -146,7 +146,7 @@ export class BoardComponent implements OnInit {
     }
   }
 
-  detailPageChanged($event): void {
+  detailPageChanged($event: any): void {
 
   }
 }

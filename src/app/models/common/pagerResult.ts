@@ -1,4 +1,4 @@
-export class Pager {
+export class PagerResult {
   Rows: object[];
   RowCount: number;
 }

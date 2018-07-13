@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ReportGroupService} from '../../shared/services/index';
-import {GuestModel, Pager} from '../../models/index';
+import {GuestModel, PagerResult} from '../../models/index';
 
 @Component({
   selector: 'app-member',
@@ -10,7 +10,7 @@ import {GuestModel, Pager} from '../../models/index';
 })
 export class GuestComponent implements OnInit {
   id: string;
-  guestPager: Pager;
+  guestPager: PagerResult;
   list: GuestModel[];
 
   public totalItems = 0;  // 总数据条数
@@ -31,7 +31,7 @@ export class GuestComponent implements OnInit {
   getGuestPager(): void {
     this.reportService.getMembers(this.currentPage, this.pageSize).subscribe(res => {
       if (res.Sign) {
-        this.guestPager = res.Message as Pager;
+        this.guestPager = res.Message as PagerResult;
         this.list = this.guestPager.Rows as GuestModel[];
         this.totalItems = this.guestPager.RowCount;
       }

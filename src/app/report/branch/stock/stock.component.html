@@ -9,13 +9,12 @@
         <p>库存总资产</p>
       </div>
       <div class="icon">
-        <i class="fa fa-money"></i>
+        <i class="fa fa-database"></i>
       </div>
-      <a routerLink="./" class="small-box-footer">详情 <i class="fa fa-arrow-circle-right"></i></a>
+      <a routerLink="./" (click)="showModal()" class="small-box-footer">详情 <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <!-- small box -->
+  <!--<div class="col-lg-3 col-md-6 col-xs-12">
     <div class="small-box bg-green">
       <div class="inner">
         <h3>￥3,402</h3>
@@ -28,7 +27,6 @@
     </div>
   </div>
   <div class="col-lg-3 col-md-6 col-xs-12">
-    <!-- small box -->
     <div class="small-box bg-yellow">
       <div class="inner">
         <h3>￥23,32</h3>
@@ -41,7 +39,6 @@
     </div>
   </div>
   <div class="col-lg-3 col-md-6 col-xs-12">
-    <!-- small box -->
     <div class="small-box bg-red">
       <div class="inner">
         <h3>765件</h3>
@@ -52,24 +49,13 @@
       </div>
       <a routerLink="./" class="small-box-footer">详情 <i class="fa fa-arrow-circle-right"></i></a>
     </div>
-  </div>
+  </div>-->
 </div>
 <div class="row">
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">基本情况</h3>
-
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title=""
-                  data-original-title="Collapse">
-            <i class="fa fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title=""
-                  data-original-title="Remove">
-            <i class="fa fa-times"></i>
-          </button>
-        </div>
+        <h3 class="box-title">仓库盘点</h3>
       </div>
       <div class="box-body">
         <div class="table-responsive">
@@ -102,7 +88,7 @@
   <div class="col-xs-12">
     <div class="box box-info">
       <div class="box-header with-border">
-        <h3 class="box-title pull-left" style="padding: 5px 10px;">库存商品</h3>
+        <h3 class="box-title pull-left" style="padding: 5px 10px;">库存商品<small> 共{{totalItems}}条</small></h3>
         <div class="box-tools">
           <div class="input-group input-group-sm" style="max-width: 250px;">
             <input type="text" [(ngModel)]="kw" name="table_search" class="form-control pull-right" placeholder="搜索商品">
@@ -135,14 +121,16 @@
             </tbody>
           </table>
           <pagination
-            [totalItems]="totalItems"
-            [(ngModel)]="currentPage"
-            [itemsPerPage]="pageSize"
+            [totalItems]="pagerParams.total"
+            [(ngModel)]="pagerParams.page"
+            [itemsPerPage]="pagerParams.size"
             (pageChanged)="pageChanged($event)"
+            [directionLinks]="false"
+            [boundaryLinks]="true"
             [previousText]="'上一页'"
             [nextText]="'下一页'"
-            [firstText]="'首页'"
-            [lastText]="'尾页'"
+            [firstText]="'&laquo;'"
+            [lastText]="'&raquo;'"
             [maxSize]="10">
           </pagination>
         </div>
@@ -268,78 +256,57 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="modal-info">
-  <div class="modal-dialog">
+
+<div class="modal fade" bsModal #modal="bs-modal"
+     tabindex="-1" role="dialog" aria-labelledby="dialog-events-name"
+     (onShow)="handler('onShow', $event)"
+     (onShown)="handler('onShown', $event)"
+     (onHide)="handler('onHide', $event)"
+     (onHidden)="handler('onHidden', $event)">
+  <div class="modal-dialog  modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h4 id="dialog-events-name" class="modal-title pull-left">营收明细</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title">牛黄解毒片 - 流水 当前库存<span class="badge bg-aqua">78</span>盒</h4>
       </div>
       <div class="modal-body">
-        <div class="box box-widget widget-user">
-          <table class="table table-bordered table-hover">
-            <thead>
-            <tr>
-              <th>时间</th>
-              <th>活动</th>
-              <th>数量</th>
-              <th>单位</th>
-              <th>经手人</th>
-              <th>剩余</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>今天</td>
-              <td>销售</td>
-              <td>2</td>
-              <td>盒</td>
-              <td>院长</td>
-              <td>78</td>
-            </tr>
-            <tr>
-              <td>昨天</td>
-              <td>销售</td>
-              <td>3</td>
-              <td>盒</td>
-              <td>院长</td>
-              <td>80</td>
-            </tr>
-            <tr>
-              <td>2018-05-06</td>
-              <td>销售</td>
-              <td>2</td>
-              <td>盒</td>
-              <td>院长</td>
-              <td>83</td>
-            </tr>
-            <tr>
-              <td>2018-05-01</td>
-              <td>销售</td>
-              <td>1</td>
-              <td>盒</td>
-              <td>院长</td>
-              <td>85</td>
-            </tr>
-            <tr>
-              <td>2018-04-01</td>
-              <td>进货</td>
-              <td>40</td>
-              <td>盒</td>
-              <td>院长</td>
-              <td>85</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+        <table class="table table-condensed table-hover">
+          <thead>
+          <tr>
+            <th>会员</th>
+            <th>项目</th>
+            <th>数量</th>
+            <th>单价</th>
+            <th>总金额</th>
+            <th>时间</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of detail_list">
+            <td>{{item.GuestName}}</td>
+            <td>{{item.ItemName}}</td>
+            <td>{{item.ItemCount}}</td>
+            <td>{{item.Price}}</td>
+            <td>{{item.TotalPrice}}</td>
+            <td>{{item.CreatedOn}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <pagination
+          [totalItems]="pagerParams2.total"
+          [(ngModel)]="pagerParams2.size"
+          [itemsPerPage]="pagerParams2.size"
+          (pageChanged)="detailPageChanged($event)"
+          [previousText]="'上一页'"
+          [nextText]="'下一页'"
+          [firstText]="'首页'"
+          [lastText]="'尾页'"
+          [maxSize]="10">
+        </pagination>
       </div>
     </div>
-    <!-- /.modal-content -->
   </div>
-  <!-- /.modal-dialog -->
 </div>
+
