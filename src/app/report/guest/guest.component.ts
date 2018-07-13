@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import {ReportService} from '../../services/index';
+import {ReportGroupService} from '../../shared/services/index';
 import {GuestModel, Pager} from '../../models/index';
 
 @Component({
@@ -19,7 +19,7 @@ export class GuestComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private reportService: ReportService) {
+    private reportService: ReportGroupService) {
 
   }
 

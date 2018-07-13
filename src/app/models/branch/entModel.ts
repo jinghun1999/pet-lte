@@ -1,4 +1,4 @@
-export class Ent {
+export class EntModel {
   ID: string;
   FullName: string;
   ResponseMan: string;
@@ -12,15 +12,12 @@ export class Ent {
   dimension: string;
   City: string;
   EntLogo: string;
-  CreatedBy: string;
-  CreatedByID: string;
-  CreatedOn: string;
-  ModifiedBy: string;
-  ModifiedByID: string;
-  ModifiedOn: string;
   MemberCount: number;
   DaySales: number;
-  MonthSales: number;
   MonthTarget: number;
+  SumStockAssets: number;
+  LastMonthSell: number;
+  LastMonthExpend: number;
+  MonthSales: number;
   EntID: string;
 }

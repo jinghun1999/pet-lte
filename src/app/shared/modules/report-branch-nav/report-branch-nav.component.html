@@ -1,0 +1,4 @@
+<ul class="nav nav-pills">
+  <li role="presentation" [ngClass]="{'active':currentUrl.indexOf('board')>-1}"><a routerLink="/report/branch/board/{{id}}">店铺概况</a></li>
+  <li role="presentation" [ngClass]="{'active':currentUrl.indexOf('stock')>-1}"><a routerLink="/report/branch/stock/{{id}}">店铺库存</a></li>
+</ul>

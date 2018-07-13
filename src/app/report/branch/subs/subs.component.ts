@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Ent} from '../../../models/ent';
-import {ReportService} from '../../../services/report.service';
+import {EntModel} from '../../../models';
+import {ReportGroupService} from '../../../shared/services';
 
 @Component({
   selector: 'app-subs',
@@ -8,8 +8,9 @@ import {ReportService} from '../../../services/report.service';
   styleUrls: ['./subs.component.css']
 })
 export class SubsComponent implements OnInit {
-  hospitals: Ent[];
-  constructor(private  rpService: ReportService) {
+  hospitals: EntModel[];
+
+  constructor(private  rpService: ReportGroupService) {
   }
 
   ngOnInit() {
@@ -20,7 +21,7 @@ export class SubsComponent implements OnInit {
 
   load(): void {
     this.rpService.getBranchEnt().subscribe(rs => {
-      this.hospitals = rs.Sign ? rs.Message as Ent[] : [];
+      this.hospitals = rs.Sign ? rs.Message as EntModel[] : [];
     });
   }
 }

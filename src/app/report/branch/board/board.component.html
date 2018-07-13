@@ -1,14 +1,12 @@
-<ul class="nav nav-pills">
-  <li role="presentation" class="active"><a routerLink="./">店铺概况</a></li>
-  <li role="presentation"><a routerLink="/report/branch/stock/{{id}}">库存</a></li>
-</ul>
+<app-report-branch-nav [id]="id"></app-report-branch-nav>
+
 <div class="row">
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
       <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">上月总销售</span>
-        <span class="info-box-number"><small>￥</small>58,093</span>
+        <span class="info-box-number"><small>￥</small>{{ent.LastMonthSell|number}}</span>
       </div>
     </div>
   </div>
@@ -17,7 +15,7 @@
       <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">上月总支出</span>
-        <span class="info-box-number"><small>￥</small>57,071</span>
+        <span class="info-box-number"><small>￥</small>{{ent.LastMonthExpend|number}}</span>
       </div>
     </div>
   </div>
@@ -26,7 +24,7 @@
       <span class="info-box-icon bg-red"><i class="ion ion-arrow-graph-up-right"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">本月已销售</span>
-        <span class="info-box-number"><small>￥</small>31,200</span>
+        <span class="info-box-number"><small>￥</small>{{ent.MonthSales|number}}</span>
       </div>
     </div>
   </div>
@@ -35,7 +33,7 @@
       <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">今日销售</span>
-        <span id="todayIncome" class="info-box-number"><small>￥</small>4,198</span>
+        <span class="info-box-number"><small>￥</small>{{ent.DaySales|number}}</span>
       </div>
     </div>
   </div>
@@ -59,7 +57,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let item of ds">
-              <td>{{item.Month}}</td>
+              <td><b>{{item.Month|date:'yyyy年MM月'}}</b></td>
               <td>{{item.Income|number}}</td>
               <td>{{item.Expenses|number}}</td>
               <td>{{item.BankFlow|number}}</td>
@@ -75,7 +73,7 @@
   <div class="col-md-12">
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">最近12个月收支图表</h3>
+        <h3 class="box-title">最近12个月收支走势</h3>
       </div>
       <div class="box-body">
         <div class="row">

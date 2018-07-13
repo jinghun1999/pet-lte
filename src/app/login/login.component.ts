@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {AuthService} from '../services';
+import {AuthService} from '../shared/services';
 import {UserToken} from '../models';
 import {Observable} from 'rxjs';
 

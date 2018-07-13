@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Pager, StockModel} from '../../../models';
 import {StockSum} from '../../../models';
-import {BranchService} from '../../../services';
+import {ReportBranchService} from '../../../shared/services';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -22,7 +22,7 @@ export class StockComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private branchService: BranchService) {
+    private branchService: ReportBranchService) {
   }
 
   ngOnInit() {
@@ -44,7 +44,7 @@ export class StockComponent implements OnInit {
   }
 
   getStockSum(): void {
-    this.branchService.getStockSum().subscribe((res) => {
+    this.branchService.getWarehouseSum().subscribe((res) => {
       if (res.Sign) {
         this.sums = res.Message as StockSum[];
       }

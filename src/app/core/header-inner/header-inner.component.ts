@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserToken} from '../../models';
-import {AuthService} from '../../services';
+import {AuthService} from '../../shared/services';
 
 // import {build$} from 'protractor/built/element';
 

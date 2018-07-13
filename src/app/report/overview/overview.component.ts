@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {ReportService} from '../../services/report.service';
+import {ReportGroupService} from '../../shared/services/reportGroup.service';
 import {GroupMonthRevenue} from '../../models';
 
 @Component({
@@ -13,7 +13,7 @@ export class OverviewComponent implements OnInit {
   ds: GroupMonthRevenue[];
 
   constructor(
-    private dbService: ReportService
+    private dbService: ReportGroupService
   ) {
   }
 

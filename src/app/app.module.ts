@@ -13,7 +13,7 @@ import {HomeComponent} from './home/home.component';
 
 import {LoadingPageModule, MaterialBarModule} from 'angular-loading-page';
 import {AuthGuard, httpInterceptor} from './shared';
-import {AuthService} from './services';
+import {AuthService} from './shared/services';
 
 
 @NgModule({

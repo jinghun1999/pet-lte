@@ -1,13 +1,13 @@
 
-export * from './userToken';
-export * from './ent';
-export * from './result';
-export * from './loginParams';
-export * from './groupMonthRevenue';
-export * from './guest';
-export * from './pager';
-export * from './earnMoney';
-export * from './stock';
-export * from './stockSum';
+export * from './user/userToken';
+export * from './branch/entModel';
+export * from './common/result';
+export * from './user/loginParams';
+export * from './group/groupMonthRevenue';
+export * from './group/guest';
+export * from './common/pager';
+export * from './branch/earnMoney';
+export * from './branch/stock';
+export * from './branch/stockSum';
 
-export * from './revenueItem'; // 营收明细
+export * from './branch/revenueItem'; // 营收明细

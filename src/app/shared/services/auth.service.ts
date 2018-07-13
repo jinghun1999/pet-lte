@@ -1,11 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-// import {catchError, delay, map, tap} from 'rxjs/operators';
-// import {LogService} from './log.service';
-import {environment} from '../../environments/environment';
-import {LoginParams} from '../models/loginParams';
-import {UserToken, Result} from '../models';
+import {environment} from '../../../environments/environment';
+import {LoginParams, UserToken, Result} from '../../models/index';
 
 @Injectable()
 export class AuthService {

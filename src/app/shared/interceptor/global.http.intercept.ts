@@ -3,7 +3,7 @@ import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse} from
 import {Observable} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 
-import {LogService} from '../../services/log.service';
+import {LogService} from '../services/log.service';
 
 /**
  * 全局http拦截器: 监视和转换从应用发送到服务器的 HTTP 请求

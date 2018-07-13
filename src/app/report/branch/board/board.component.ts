@@ -2,8 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap/modal';
 import {ActivatedRoute} from '@angular/router';
 
-import {BranchService} from '../../../services';
-import {GroupMonthRevenue, EarnMoney, RevenueItem, Pager} from '../../../models';
+import {ReportBranchService} from '../../../shared/services';
+import {GroupMonthRevenue, EarnMoney, RevenueItem, Pager, EntModel} from '../../../models';
 
 @Component({
   selector: 'app-board',
@@ -14,6 +14,7 @@ export class BoardComponent implements OnInit {
   id: string;
   pager: Pager;
   ds: GroupMonthRevenue[];
+  ent = new EntModel();
   list: EarnMoney[];
   chartOption: any;
 
@@ -28,12 +29,13 @@ export class BoardComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private branchService: BranchService) {
+    private branchService: ReportBranchService) {
   }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     setTimeout(() => {
+      this.getEnt('0');
       this.getBoard();
       this.getEarnPager();
     });
@@ -60,6 +62,14 @@ export class BoardComponent implements OnInit {
   pageChanged(event: any): void {
     this.currentPage = event.page;
     this.getEarnPager();
+  }
+
+  getEnt(id: string): void {
+    this.branchService.getBranchInfo(id).subscribe((res) => {
+      if (res.Sign) {
+        this.ent = res.Message as EntModel;
+      }
+    });
   }
 
   loadChart(): void {
