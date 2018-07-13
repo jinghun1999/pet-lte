@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-lg-3 col-md-6 col-xs-12">
     <!-- small box -->
-    <div class="small-box bg-aqua">
+    <div class="small-box bg-light-blue">
       <div class="inner">
         <h3>￥19,350</h3>
         <p>库存总资产</p>
@@ -14,7 +14,6 @@
       <a routerLink="./" class="small-box-footer">详情 <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
-  <!-- ./col -->
   <div class="col-lg-3 col-md-6 col-xs-12">
     <!-- small box -->
     <div class="small-box bg-green">
@@ -28,7 +27,6 @@
       <a routerLink="./" class="small-box-footer">详情 <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
-  <!-- ./col -->
   <div class="col-lg-3 col-md-6 col-xs-12">
     <!-- small box -->
     <div class="small-box bg-yellow">
@@ -42,7 +40,6 @@
       <a routerLink="./" class="small-box-footer">详情 <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
-  <!-- ./col -->
   <div class="col-lg-3 col-md-6 col-xs-12">
     <!-- small box -->
     <div class="small-box bg-red">
@@ -56,7 +53,6 @@
       <a routerLink="./" class="small-box-footer">详情 <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
-  <!-- ./col -->
 </div>
 <div class="row">
   <div class="col-xs-12">
@@ -108,10 +104,10 @@
       <div class="box-header with-border">
         <h3 class="box-title pull-left" style="padding: 5px 10px;">库存商品</h3>
         <div class="box-tools">
-          <div class="input-group input-group-sm" style="width: 250px;">
+          <div class="input-group input-group-sm" style="max-width: 250px;">
             <input type="text" [(ngModel)]="kw" name="table_search" class="form-control pull-right" placeholder="搜索商品">
             <div class="input-group-btn">
-              <button type="submit" (click)="search()" class="btn btn-default"><i class="fa fa-search"></i></button>
+              <button type="submit" (click)="search()" class="btn btn-primary"><i class="fa fa-search"></i></button>
             </div>
           </div>
         </div>

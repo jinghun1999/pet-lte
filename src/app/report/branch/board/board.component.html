@@ -1,43 +1,56 @@
 <app-report-branch-nav [id]="id"></app-report-branch-nav>
 
 <div class="row">
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box">
-      <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
-      <div class="info-box-content">
-        <span class="info-box-text">上月总销售</span>
-        <span class="info-box-number"><small>￥</small>{{ent.LastMonthSell|number}}</span>
+  <div class="col-lg-3 col-md-6 col-xs-12">
+    <div class="small-box bg-aqua">
+      <div class="inner">
+        <h3>￥{{ent.LastMonthSell|number}}</h3>
+        <p>上月总销售</p>
       </div>
+      <div class="icon">
+        <i class="fa fa-money"></i>
+      </div>
+      <a routerLink="./" class="small-box-footer">详情 <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box">
-      <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
-      <div class="info-box-content">
-        <span class="info-box-text">上月总支出</span>
-        <span class="info-box-number"><small>￥</small>{{ent.LastMonthExpend|number}}</span>
+  <div class="col-lg-3 col-md-6 col-xs-12">
+    <div class="small-box bg-green">
+      <div class="inner">
+        <h3>￥{{ent.LastMonthExpend|number}}</h3>
+        <p>上月总支出</p>
       </div>
+      <div class="icon">
+        <i class="fa fa-external-link"></i>
+      </div>
+      <a routerLink="./" class="small-box-footer">详情 <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box">
-      <span class="info-box-icon bg-red"><i class="ion ion-arrow-graph-up-right"></i></span>
-      <div class="info-box-content">
-        <span class="info-box-text">本月已销售</span>
-        <span class="info-box-number"><small>￥</small>{{ent.MonthSales|number}}</span>
+  <div class="col-lg-3 col-md-6 col-xs-12">
+    <div class="small-box bg-red">
+      <div class="inner">
+        <h3>￥{{ent.MonthSales|number}}</h3>
+        <p>本月已销售</p>
       </div>
+      <div class="icon">
+        <i class="fa fa-calendar-check-o"></i>
+      </div>
+      <a routerLink="./" class="small-box-footer">详情 <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box">
-      <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
-      <div class="info-box-content">
-        <span class="info-box-text">今日销售</span>
-        <span class="info-box-number"><small>￥</small>{{ent.DaySales|number}}</span>
+  <div class="col-lg-3 col-md-6 col-xs-12">
+    <div class="small-box bg-yellow">
+      <div class="inner">
+        <h3>￥{{ent.DaySales|number}}</h3>
+        <p>今日销售</p>
       </div>
+      <div class="icon">
+        <i class="fa fa-jpy"></i>
+      </div>
+      <a routerLink="./" class="small-box-footer">详情 <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
 </div>
+
 <div class="row">
   <div class="col-xs-12">
     <div class="box box-info">
