@@ -39,8 +39,20 @@ export class ReportBranchService {
   }
 
   // 库存明细筛选
-  getWarehousePager(page: number, kw: string, war: string): Observable<Result> {
-    const url = `${environment.baseUrl}/reportBranch/getStockDetail?war=${war}&kw=${kw}&page=${page}&size=12`;
+  getWarehousePager(page: number, size: number, kw: string, war: string): Observable<Result> {
+    const url = `${environment.baseUrl}/reportBranch/getStockDetailPager?war=${war}&kw=${kw}&page=${page}&size=${size}`;
+    return this.http.get<Result>(url);
+  }
+
+  // 概况上方弹出明细
+  getSettlePager(page: number, size: number, start: string, end: string): Observable<Result> {
+    const url = `${environment.baseUrl}/reportBranch/getSettleAccountDetailPager?start=${start}&end=${end}&page=${page}&size=${size}`;
+    return this.http.get<Result>(url);
+  }
+
+  // 概况下方弹出明细
+  getDailySellPager(page: number, size: number, start: string, end: string): Observable<Result> {
+    const url = `${environment.baseUrl}/reportBranch/getDailySellDetailPager?start=${start}&end=${end}&page=${page}&size=${size}`;
     return this.http.get<Result>(url);
   }
 }

@@ -3,7 +3,7 @@ import {ModalDirective} from 'ngx-bootstrap/modal';
 import {ActivatedRoute} from '@angular/router';
 
 import {ReportBranchService} from '../../../shared/services';
-import {GroupMonthRevenue, EarnMoney, RevenueItem, PagerResult, EntModel} from '../../../models';
+import {GroupMonthRevenue, EarnMoney, PagerResult, EntModel, Expense, PageParams, SettleAccount} from '../../../models';
 
 @Component({
   selector: 'app-board',
@@ -18,14 +18,16 @@ export class BoardComponent implements OnInit {
   list: EarnMoney[];
   chartOption: any;
 
+  // 点击了哪个展示详情按钮
+  t = 1;
+
   @ViewChild(ModalDirective) modal: ModalDirective;
   currentDate: string;
-  detail_list: RevenueItem[] = [];
+  detail_list: Expense[] = [];
+  settle_list: SettleAccount[] = [];
 
-  public totalItems = 0;  // 总数据条数
-  public pageSize = 10; // 每页数条数
-  public currentPage = 1; // 当前页码
-  public currentPage2 = 1;
+  pagerParams = new PageParams();
+  pagerParams2 = new PageParams();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -50,17 +52,17 @@ export class BoardComponent implements OnInit {
   }
 
   getEarnPager(): void {
-    this.branchService.getEarnPager(this.currentPage, this.pageSize).subscribe((res) => {
+    this.branchService.getEarnPager(this.pagerParams.page, this.pagerParams.size).subscribe((res) => {
       if (res.Sign) {
         this.pager = res.Message as PagerResult;
         this.list = this.pager.Rows as EarnMoney[];
-        this.totalItems = this.pager.RowCount;
+        this.pagerParams.total = this.pager.RowCount;
       }
     });
   }
 
   pageChanged(event: any): void {
-    this.currentPage = event.page;
+    this.pagerParams.page = event.page;
     this.getEarnPager();
   }
 
@@ -131,22 +133,58 @@ export class BoardComponent implements OnInit {
     };
   }
 
-  showModal(d: string) {
-    this.currentDate = d;
-    this.detail_list.splice(0, this.detail_list.length);
-    for (let i = 1; i <= 10; i++) {
-      this.detail_list.push({GuestName: '张三', ItemName: '狂犬疫苗接种', ItemCount: 2, Price: 304, TotalPrice: 608, CreatedOn: '2018-6-4 19:34'});
+  showModal(t: number, d: string) {
+    this.t = t;
+    this.pagerParams2 = new PageParams();
+    if (t === 1) {
+      this.currentDate = d;
+      this.getDailyPager();
+    } else if (t === 2) {
+      this.getSettleDetailPager();
     }
-    this.modal.show();
   }
 
-  handler(type: string, $event: ModalDirective) {
+  getSettleDetailPager(): void {
+    this.branchService.getSettlePager(this.pagerParams2.page, this.pagerParams2.size, null, null).subscribe((res) => {
+      if (res.Sign) {
+        const p = res.Message as PagerResult;
+        this.settle_list = p.Rows as SettleAccount[];
+        this.pagerParams2.total = p.RowCount;
+        if (!this.modal.isShown) {
+          this.modal.show();
+        }
+      }
+    });
+  }
+
+  getDailyPager(): void {
+    this.branchService.getDailySellPager(this.pagerParams2.page, this.pagerParams2.size, null, null).subscribe((res) => {
+      if (res.Sign) {
+        const p = res.Message as PagerResult;
+        this.detail_list = p.Rows as Expense[];
+        this.pagerParams2.total = p.RowCount;
+        if (!this.modal.isShown) {
+          this.modal.show();
+        }
+      }
+    });
+  }
+
+  handler2(type: string, $event: ModalDirective) {
     if (type === 'onHide') {
-      this.detail_list = [];
+      // this.detail_list = [];
+      // this.settle_list = [];
     }
   }
 
   detailPageChanged($event: any): void {
-
+    if (this.modal.isShown) {
+      this.pagerParams2.page = $event.page;
+      if (this.t === 1) {
+        this.getDailyPager();
+      } else if (this.t === 2) {
+        this.getSettleDetailPager();
+      }
+    }
   }
 }

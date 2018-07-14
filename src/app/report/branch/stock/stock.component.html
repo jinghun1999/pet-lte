@@ -275,28 +275,28 @@
         <table class="table table-condensed table-hover">
           <thead>
           <tr>
-            <th>会员</th>
-            <th>项目</th>
+            <th>仓库</th>
+            <th>商品</th>
             <th>数量</th>
-            <th>单价</th>
-            <th>总金额</th>
-            <th>时间</th>
+            <th>规格</th>
+            <th>进价</th>
+            <th>售价</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let item of detail_list">
-            <td>{{item.GuestName}}</td>
+            <td>{{item.WarehouseName}}</td>
             <td>{{item.ItemName}}</td>
-            <td>{{item.ItemCount}}</td>
-            <td>{{item.Price}}</td>
-            <td>{{item.TotalPrice}}</td>
-            <td>{{item.CreatedOn}}</td>
+            <td>{{item.ItemCountNum}}</td>
+            <td>{{item.ItemStandard}}</td>
+            <td>{{item.InputPrice}}</td>
+            <td>{{item.SellPrice}}</td>
           </tr>
           </tbody>
         </table>
         <pagination
           [totalItems]="pagerParams2.total"
-          [(ngModel)]="pagerParams2.size"
+          [(ngModel)]="pagerParams2.page"
           [itemsPerPage]="pagerParams2.size"
           (pageChanged)="detailPageChanged($event)"
           [previousText]="'上一页'"

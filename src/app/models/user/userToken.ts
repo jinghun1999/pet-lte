@@ -1,12 +1,10 @@
-import {Ent} from './ent';
-
 export class UserToken {
   Token: {
     timeout: string;
     token: string;
     expires_in: number;
   };
-  Hospitals: Ent[];
+  Hospitals: object[];
   ID: string;
   FullName: string;
   Mobile: string;
