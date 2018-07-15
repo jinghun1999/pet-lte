@@ -13,7 +13,7 @@ const routes: Routes = [
         children: [
           {
             path: 'overview',
-            data: {title: '营收', description: '选择店铺以查看营业情况'},
+            data: {title: '营收', description: ''},
             loadChildren: './report/overview/overview.module#OverviewModule',
             canActivate: [AuthGuard]
           },
@@ -24,7 +24,7 @@ const routes: Routes = [
             children: [
               {
                 path: 'subs',
-                data: {title: '所有分店', description: '选择店铺以查看营业情况'},
+                data: {title: '所有分店', description: '选择可查看详情'},
                 loadChildren: './report/branch/subs/subs.module#SubsModule'
               },
               {path: 'board/:id', data: {title: '分店概况'}, loadChildren: './report/branch/board/board.module#BoardModule'},

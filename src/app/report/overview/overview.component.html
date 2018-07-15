@@ -1,37 +1,37 @@
 <div class="row">
-  <div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="col-md-3 col-sm-6 col-xs-12" (click)="showModal(2, '上月总销售', 'LAST_MONTH')">
     <div class="info-box">
       <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">上月总销售</span>
-        <span class="info-box-number"><small>￥</small>58,093</span>
+        <span class="info-box-number"><small>￥</small>{{ent.LastMonthSell|number}}</span>
       </div>
     </div>
   </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="col-md-3 col-sm-6 col-xs-12" (click)="showModal(3, '上月总支出', 'LAST_MONTH')">
     <div class="info-box">
-      <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
+      <span class="info-box-icon bg-green"><i class="fa fa-money"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">上月总支出</span>
-        <span class="info-box-number"><small>￥</small>57,071</span>
+        <span class="info-box-number"><small>￥</small>{{ent.LastMonthExpend|number}}</span>
       </div>
     </div>
   </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="col-md-3 col-sm-6 col-xs-12" (click)="showModal(2, '本月已销售', 'THIS_MONTH')">
     <div class="info-box">
       <span class="info-box-icon bg-red"><i class="ion ion-arrow-graph-up-right"></i></span>
       <div class="info-box-content">
-        <span class="info-box-text">本月会员</span>
-        <span class="info-box-number"><small>增加</small>200<small>人</small></span>
+        <span class="info-box-text">本月已销售</span>
+        <span class="info-box-number"><small>￥</small>{{ent.MonthSales|number}}</span>
       </div>
     </div>
   </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="col-md-3 col-sm-6 col-xs-12" (click)="showModal(2, '今日销售', 'TODAY')">
     <div class="info-box">
-      <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
+      <span class="info-box-icon bg-blue"><i class="fa fa-money"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">今日销售</span>
-        <span id="todayIncome" class="info-box-number"><small>￥</small>4,198</span>
+        <span class="info-box-number"><small>￥</small>{{ent.DaySales|number}}</span>
       </div>
     </div>
   </div>
@@ -54,8 +54,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let item of ds">
-              <td>{{item.Month}}</td>
+            <tr *ngFor="let item of list">
+              <td class="text-red text-bold"><i class="fa fa-calendar"></i> {{item.Month}}</td>
               <td>{{item.Income|number}}</td>
               <td>{{item.Expenses|number}}</td>
               <td>{{item.BankFlow|number}}</td>
@@ -81,6 +81,87 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #modal="bs-modal"
+     tabindex="-1" role="dialog" aria-labelledby="dialog-events-name"
+     (onShow)="handler2('onShow', $event)"
+     (onShown)="handler2('onShown', $event)"
+     (onHide)="handler2('onHide', $event)"
+     (onHidden)="handler2('onHidden', $event)">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-events-name" class="modal-title pull-left">营收明细({{smallTitle}})  <small>共有{{pagerParams2.total}}记录</small></h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-condensed table-hover" *ngIf="t===2">
+          <thead>
+          <tr>
+            <th>编号</th>
+            <th>项目</th>
+            <th>售价</th>
+            <th>数量</th>
+            <th>总价</th>
+            <th>实价</th>
+            <th>折扣金额</th>
+            <th>是否付款</th>
+            <th>付款时间</th>
+            <th>说明</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of list_income">
+            <td>{{item.ItemCode}}</td>
+            <td>{{item.ItemName}}</td>
+            <td>{{item.SellPrice}}</td>
+            <td>{{item.TotalNum}}</td>
+            <td>{{item.TotalCost}}</td>
+            <td>{{item.InfactPrice}}</td>
+            <td>{{item.DiscountMoney}}</td>
+            <td>{{item.PaidStatus}}</td>
+            <td>{{item.PaidTime|date:'yyyy-MM-dd'}}</td>
+            <td>{{item.ItemDescript}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <table class="table table-condensed table-hover" *ngIf="t===3">
+          <thead>
+          <tr>
+            <th>编号</th>
+            <th>项目</th>
+            <th>说明</th>
+            <th>金额</th>
+            <th>时间</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of list_expend">
+            <td>{{item.CateNo}}</td>
+            <td>{{item.CateName}}</td>
+            <td>{{item.Describe}}</td>
+            <td>{{item.Amount}}</td>
+            <td>{{item.InputDate|date:'yyyy-MM-dd'}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <pagination
+          [totalItems]="pagerParams2.total"
+          [(ngModel)]="pagerParams2.page"
+          [itemsPerPage]="pagerParams2.size"
+          (pageChanged)="detailPageChanged($event)"
+          [previousText]="'上一页'"
+          [nextText]="'下一页'"
+          [firstText]="'首页'"
+          [lastText]="'尾页'"
+          [maxSize]="10">
+        </pagination>
       </div>
     </div>
   </div>

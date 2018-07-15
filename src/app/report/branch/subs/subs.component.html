@@ -6,13 +6,13 @@
           <div class="box box-widget widget-user">
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header bg-aqua-active">
-              <h3 class="widget-user-username">{{hos.City?hos.City:'中国'}}</h3>
+              <h3 class="widget-user-username"><i class="fa fa-map-marker"></i> {{hos.City?hos.City:'中国'}}</h3>
+              <h3 class="widget-user-username"><i class="fa fa-id-badge"></i> {{hos.ResponseMan}}</h3>
               <h5 class="widget-user-desc">{{hos.FullName}}</h5>
             </div>
             <div class="box-footer">
               <!-- /.row -->
               <ul class="nav nav-stacked">
-                <li><a class="itembar title">院长：{{hos.ResponseMan}}</a></li>
                 <li><a class="itembar title">手机：{{hos.TelPhone}}</a></li>
                 <li><a class="itembar title">地址：{{hos.Address}}</a></li>
                 <li><a class="itembar title">本月目标：<b>￥{{hos.MonthTarget|number}}</b></a></li>

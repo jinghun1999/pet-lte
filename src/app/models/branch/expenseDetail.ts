@@ -1,5 +1,5 @@
 // 营销明细
-export class Expense {
+export class ExpenseDetail {
   Amount: number;
   CateName: string;
   CateNo: string;

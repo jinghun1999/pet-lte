@@ -3,7 +3,7 @@ import {ModalDirective} from 'ngx-bootstrap/modal';
 import {ActivatedRoute} from '@angular/router';
 
 import {ReportBranchService} from '../../../shared/services';
-import {GroupMonthRevenue, EarnMoney, PagerResult, EntModel, Expense, PageParams, SettleAccount} from '../../../models';
+import {GroupMonthRevenue, EarnMoney, PagerResult, EntModel, ExpenseDetail, PageParams, IncomeDetail} from '../../../models';
 
 @Component({
   selector: 'app-board',
@@ -13,18 +13,20 @@ import {GroupMonthRevenue, EarnMoney, PagerResult, EntModel, Expense, PageParams
 export class BoardComponent implements OnInit {
   id: string;
   pager: PagerResult;
+  smallTitle: string;
   ds: GroupMonthRevenue[];
   ent = new EntModel();
   list: EarnMoney[];
   chartOption: any;
 
-  // 点击了哪个展示详情按钮
+  // 点击了哪个展示详情按钮，1单日进账，2进账，3出账
   t = 1;
 
   @ViewChild(ModalDirective) modal: ModalDirective;
   currentDate: string;
-  detail_list: Expense[] = [];
-  settle_list: SettleAccount[] = [];
+  current_type: string;
+  list_expend: ExpenseDetail[] = [];
+  list_income: IncomeDetail[] = [];
 
   pagerParams = new PageParams();
   pagerParams2 = new PageParams();
@@ -133,22 +135,29 @@ export class BoardComponent implements OnInit {
     };
   }
 
-  showModal(t: number, d: string) {
+  showModal(t: number, date: string, small_title: string) {
     this.t = t;
+    this.smallTitle = small_title;
     this.pagerParams2 = new PageParams();
     if (t === 1) {
-      this.currentDate = d;
-      this.getDailyPager();
+      this.currentDate = date;
+      this.current_type = date;
+      this.getSalesPager();
     } else if (t === 2) {
-      this.getSettleDetailPager();
+      this.current_type = date;
+      this.getSalesPager();
+    } else if (t === 3) {
+      // 上月支出
+      this.current_type = date;
+      this.getExpendPager();
     }
   }
 
-  getSettleDetailPager(): void {
-    this.branchService.getSettlePager(this.pagerParams2.page, this.pagerParams2.size, null, null).subscribe((res) => {
+  getExpendPager(): void {
+    this.branchService.getExpendPager(this.pagerParams2.page, this.pagerParams2.size, this.id, this.current_type).subscribe((res) => {
       if (res.Sign) {
         const p = res.Message as PagerResult;
-        this.settle_list = p.Rows as SettleAccount[];
+        this.list_expend = p.Rows as ExpenseDetail[];
         this.pagerParams2.total = p.RowCount;
         if (!this.modal.isShown) {
           this.modal.show();
@@ -157,11 +166,11 @@ export class BoardComponent implements OnInit {
     });
   }
 
-  getDailyPager(): void {
-    this.branchService.getDailySellPager(this.pagerParams2.page, this.pagerParams2.size, null, null).subscribe((res) => {
+  getSalesPager(): void {
+    this.branchService.getSalesPager(this.pagerParams2.page, this.pagerParams2.size, this.id, this.current_type).subscribe((res) => {
       if (res.Sign) {
         const p = res.Message as PagerResult;
-        this.detail_list = p.Rows as Expense[];
+        this.list_income = p.Rows as IncomeDetail[];
         this.pagerParams2.total = p.RowCount;
         if (!this.modal.isShown) {
           this.modal.show();
@@ -174,6 +183,7 @@ export class BoardComponent implements OnInit {
     if (type === 'onHide') {
       // this.detail_list = [];
       // this.settle_list = [];
+      this.currentDate = '';
     }
   }
 
@@ -181,9 +191,11 @@ export class BoardComponent implements OnInit {
     if (this.modal.isShown) {
       this.pagerParams2.page = $event.page;
       if (this.t === 1) {
-        this.getDailyPager();
+        this.getSalesPager();
       } else if (this.t === 2) {
-        this.getSettleDetailPager();
+        this.getSalesPager();
+      } else if (this.t === 3) {
+        this.getExpendPager();
       }
     }
   }

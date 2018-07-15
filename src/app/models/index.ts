@@ -11,5 +11,5 @@ export * from './branch/stock';
 export * from './branch/stockSum';
 
 export * from './branch/revenueItem'; // 营收明细
-export * from './branch/expense';
-export * from './branch/settleAccount';
+export * from './branch/expenseDetail';
+export * from './branch/incomeDetail';

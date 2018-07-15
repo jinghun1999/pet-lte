@@ -88,7 +88,7 @@
   <div class="col-xs-12">
     <div class="box box-info">
       <div class="box-header with-border">
-        <h3 class="box-title pull-left" style="padding: 5px 10px;">库存商品<small> 共{{totalItems}}条</small></h3>
+        <h3 class="box-title pull-left" style="padding: 5px 10px;">库存商品<small> 共{{pagerParams.total}}条</small></h3>
         <div class="box-tools">
           <div class="input-group input-group-sm" style="max-width: 250px;">
             <input type="text" [(ngModel)]="kw" name="table_search" class="form-control pull-right" placeholder="搜索商品">
@@ -266,7 +266,7 @@
   <div class="modal-dialog  modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 id="dialog-events-name" class="modal-title pull-left">营收明细</h4>
+        <h4 id="dialog-events-name" class="modal-title pull-left">库存资产 <small>共有{{pagerParams2.total}}记录</small></h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
           <span aria-hidden="true">&times;</span>
         </button>

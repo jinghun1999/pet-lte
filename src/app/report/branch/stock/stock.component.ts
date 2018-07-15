@@ -65,7 +65,7 @@ export class StockComponent implements OnInit {
     this.getStockPager();
   }
 
-  showModal(d: string) {
+  showModal() {
     this.detail_list = [];
     this.getStockDetailPager();
   }

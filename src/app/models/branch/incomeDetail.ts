@@ -1,4 +1,4 @@
-export class SettleAccount {
+export class IncomeDetail {
   ItemCode: string;
   ItemName: string;
   PackageUnit: string;

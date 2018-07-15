@@ -12,7 +12,6 @@ export class ReportBranchService {
   constructor(private http: HttpClient) {
   }
 
-
   // 分店明细数据
   getBranchInfo(id: string): Observable<Result> {
     return this.http.get<Result>(environment.baseUrl + '/reportBranch/getBranchInfo');
@@ -44,15 +43,15 @@ export class ReportBranchService {
     return this.http.get<Result>(url);
   }
 
-  // 概况上方弹出明细
-  getSettlePager(page: number, size: number, start: string, end: string): Observable<Result> {
-    const url = `${environment.baseUrl}/reportBranch/getSettleAccountDetailPager?start=${start}&end=${end}&page=${page}&size=${size}`;
+  // 支出明细
+  getExpendPager(page: number, size: number, ent_id: string, date_type: string): Observable<Result> {
+    let url = `${environment.baseUrl}/reportBranch/GetExpendDetailPager?ent_id=${ent_id}&date_type=${date_type}&page=${page}&size=${size}`;
     return this.http.get<Result>(url);
   }
 
-  // 概况下方弹出明细
-  getDailySellPager(page: number, size: number, start: string, end: string): Observable<Result> {
-    const url = `${environment.baseUrl}/reportBranch/getDailySellDetailPager?start=${start}&end=${end}&page=${page}&size=${size}`;
+  // 收入明细
+  getSalesPager(page: number, size: number, ent_id: string, date_type: string): Observable<Result> {
+    let url = `${environment.baseUrl}/reportBranch/getIncomeDetailPager?ent_id=${ent_id}&date_type=${date_type}&page=${page}&size=${size}`;
     return this.http.get<Result>(url);
   }
 }

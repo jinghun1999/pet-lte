@@ -10,7 +10,7 @@
       <div class="icon">
         <i class="fa fa-money"></i>
       </div>
-      <a routerLink="./" class="small-box-footer" (click)="showModal(2, 'LAST_MONTH_INCOME')">详情 <i class="fa fa-arrow-circle-right"></i></a>
+      <a routerLink="./" class="small-box-footer" (click)="showModal(2, 'LAST_MONTH', '上月总营收')">详情 <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <div class="col-lg-3 col-md-6 col-xs-12">
@@ -22,7 +22,7 @@
       <div class="icon">
         <i class="fa fa-external-link"></i>
       </div>
-      <a routerLink="./" class="small-box-footer" (click)="showModal(2, 'LAST_MONTH_EXPEND')">详情 <i class="fa fa-arrow-circle-right"></i></a>
+      <a routerLink="./" class="small-box-footer" (click)="showModal(3, 'LAST_MONTH', '上月总支出')">详情 <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <div class="col-lg-3 col-md-6 col-xs-12">
@@ -34,7 +34,7 @@
       <div class="icon">
         <i class="fa fa-calendar-check-o"></i>
       </div>
-      <a routerLink="./" class="small-box-footer" (click)="showModal(2, 'THIS_MONTH_INCOME')">详情 <i class="fa fa-arrow-circle-right"></i></a>
+      <a routerLink="./" class="small-box-footer" (click)="showModal(2, 'THIS_MONTH', '本月销售')">详情 <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <div class="col-lg-3 col-md-6 col-xs-12">
@@ -46,7 +46,61 @@
       <div class="icon">
         <i class="fa fa-jpy"></i>
       </div>
-      <a routerLink="./" class="small-box-footer" (click)="showModal(2, 'TODAY_INCOME')">详情 <i class="fa fa-arrow-circle-right"></i></a>
+      <a routerLink="./" class="small-box-footer" (click)="showModal(2, 'TODAY', '今日销售')">详情 <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">单日项目营收汇总</h3>
+      </div>
+      <div class="box-body">
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>日期</th>
+            <th>化验</th>
+            <th>影像</th>
+            <th>处方</th>
+            <th>寄养</th>
+            <th>住院</th>
+            <th>服务</th>
+            <th>疫苗</th>
+            <th>直接销售</th>
+            <th>销售总额</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of list">
+            <td><a routerLink="./" (click)="showModal(1, item.CountDate, '单日营收明细')">{{item.CountDate|date:'yyyy-MM-dd'}} <i class="fa fa-external-link"></i></a>
+            </td>
+            <td>{{item.ChemicalExam|number}}</td>
+            <td>{{item.VideoExam|number}}</td>
+            <td>{{item.Prescription|number}}</td>
+            <td>{{item.Foster|number}}</td>
+            <td>{{item.Hospital|number}}</td>
+            <td>{{item.Service|number}}</td>
+            <td>{{item.Vaccine}}</td>
+            <td>{{item.DirectSell|number}}</td>
+            <td>{{item.SellTotal|number}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <pagination
+          [totalItems]="pagerParams.total"
+          [(ngModel)]="pagerParams.page"
+          [itemsPerPage]="pagerParams.size"
+          (pageChanged)="pageChanged($event)"
+          [previousText]="'上一页'"
+          [nextText]="'下一页'"
+          [firstText]="'首页'"
+          [lastText]="'尾页'"
+          [maxSize]="10">
+        </pagination>
+      </div>
     </div>
   </div>
 </div>
@@ -96,60 +150,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12">
-    <div class="box box-info">
-      <div class="box-header with-border">
-        <h3 class="box-title">单日项目营收汇总</h3>
-      </div>
-      <div class="box-body">
-        <table class="table table-bordered table-hover">
-          <thead>
-          <tr>
-            <th>日期</th>
-            <th>化验</th>
-            <th>影像</th>
-            <th>处方</th>
-            <th>寄养</th>
-            <th>住院</th>
-            <th>服务</th>
-            <th>疫苗</th>
-            <th>直接销售</th>
-            <th>销售总额</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let item of list">
-            <td><a routerLink="./" (click)="showModal(1, item.CountDate)">{{item.CountDate|date:'yyyy-MM-dd'}} <i class="fa fa-external-link"></i></a>
-            </td>
-            <td>{{item.ChemicalExam|number}}</td>
-            <td>{{item.VideoExam|number}}</td>
-            <td>{{item.Prescription|number}}</td>
-            <td>{{item.Foster|number}}</td>
-            <td>{{item.Hospital|number}}</td>
-            <td>{{item.Service|number}}</td>
-            <td>{{item.Vaccine}}</td>
-            <td>{{item.DirectSell|number}}</td>
-            <td>{{item.SellTotal|number}}</td>
-          </tr>
-          </tbody>
-        </table>
-        <pagination
-          [totalItems]="pagerParams.total"
-          [(ngModel)]="pagerParams.page"
-          [itemsPerPage]="pagerParams.size"
-          (pageChanged)="pageChanged($event)"
-          [previousText]="'上一页'"
-          [nextText]="'下一页'"
-          [firstText]="'首页'"
-          [lastText]="'尾页'"
-          [maxSize]="10">
-        </pagination>
       </div>
     </div>
   </div>
@@ -399,33 +399,13 @@
   <div class="modal-dialog  modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 id="dialog-events-name" class="modal-title pull-left">{{currentDate|date:'yyyy-MM-dd'}}营收明细</h4>
+        <h4 id="dialog-events-name" class="modal-title pull-left">{{currentDate|date:'yyyy-MM-dd'}}{{smallTitle}} <small>共有{{pagerParams2.total}}记录</small></h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-condensed table-hover" *ngIf="t===1">
-          <thead>
-          <tr>
-            <th>编号</th>
-            <th>项目</th>
-            <th>说明</th>
-            <th>金额</th>
-            <th>时间</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let item of detail_list">
-            <td>{{item.CateNo}}</td>
-            <td>{{item.CateName}}</td>
-            <td>{{item.Describe}}</td>
-            <td>{{item.Amount}}</td>
-            <td>{{item.InputDate|date:'yyyy-MM-dd'}}</td>
-          </tr>
-          </tbody>
-        </table>
-        <table class="table table-condensed table-hover" *ngIf="t===2">
+        <table class="table table-condensed table-hover" *ngIf="t===1||t===2">
           <thead>
           <tr>
             <th>编号</th>
@@ -441,7 +421,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let item of settle_list">
+          <tr *ngFor="let item of list_income">
             <td>{{item.ItemCode}}</td>
             <td>{{item.ItemName}}</td>
             <td>{{item.SellPrice}}</td>
@@ -452,6 +432,26 @@
             <td>{{item.PaidStatus}}</td>
             <td>{{item.PaidTime|date:'yyyy-MM-dd'}}</td>
             <td>{{item.ItemDescript}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <table class="table table-condensed table-hover" *ngIf="t===3">
+          <thead>
+          <tr>
+            <th>编号</th>
+            <th>项目</th>
+            <th>说明</th>
+            <th>金额</th>
+            <th>时间</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of list_expend">
+            <td>{{item.CateNo}}</td>
+            <td>{{item.CateName}}</td>
+            <td>{{item.Describe}}</td>
+            <td>{{item.Amount}}</td>
+            <td>{{item.InputDate|date:'yyyy-MM-dd'}}</td>
           </tr>
           </tbody>
         </table>
