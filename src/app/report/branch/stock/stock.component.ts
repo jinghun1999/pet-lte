@@ -39,7 +39,7 @@ export class StockComponent implements OnInit {
   }
 
   getStockPager(): void {
-    this.branchService.getStockPager(this.pagerParams.page, this.pagerParams.size, this.kw).subscribe((res) => {
+    this.branchService.getStockPager(this.id, this.pagerParams.page, this.pagerParams.size, this.kw).subscribe((res) => {
       if (res.Sign) {
         this.pager = res.Message as PagerResult;
         this.list = this.pager.Rows as StockModel[];

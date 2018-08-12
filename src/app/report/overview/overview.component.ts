@@ -29,12 +29,12 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.getEnt(null);
       this.load();
     });
   }
 
   load(): void {
+    this.getEnt();
     this.groupService.getGroupMonth().subscribe(rs => {
       this.list = rs.Sign ? rs.Message as GroupMonthRevenue[] : [];
       this.loadChart();
@@ -101,8 +101,8 @@ export class OverviewComponent implements OnInit {
   }
 
 
-  getEnt(id: string): void {
-    this.groupService.getGroupInfo(id).subscribe((res) => {
+  getEnt(): void {
+    this.groupService.getGroupInfo().subscribe((res) => {
       if (res.Sign) {
         this.ent = res.Message as EntModel;
       }

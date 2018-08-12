@@ -39,7 +39,7 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     setTimeout(() => {
-      this.getEnt('0');
+      this.getEnt(this.id);
       this.getBoard();
       this.getEarnPager();
     });
@@ -54,7 +54,7 @@ export class BoardComponent implements OnInit {
   }
 
   getEarnPager(): void {
-    this.branchService.getEarnPager(this.pagerParams.page, this.pagerParams.size).subscribe((res) => {
+    this.branchService.getEarnPager(this.id, this.pagerParams.page, this.pagerParams.size).subscribe((res) => {
       if (res.Sign) {
         this.pager = res.Message as PagerResult;
         this.list = this.pager.Rows as EarnMoney[];
@@ -77,13 +77,19 @@ export class BoardComponent implements OnInit {
   }
 
   loadChart(): void {
-    const income = [], expenses = [], bankflow = [], months = [];
+    let income = [], expenses = [], bankflow = [], months = [];
     this.ds.forEach((item, index) => {
       income.push(item.Income);
       expenses.push(item.Expenses);
       bankflow.push(item.BankFlow);
       months.push(item.Month);
     });
+
+    income = income.reverse();
+    expenses = expenses.reverse();
+    bankflow = bankflow.reverse();
+    months = months.reverse();
+
     this.chartOption = {
       tooltip: {
         trigger: 'axis'

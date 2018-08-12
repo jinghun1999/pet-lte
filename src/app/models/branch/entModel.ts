@@ -20,4 +20,5 @@ export class EntModel {
   LastMonthExpend: number;
   MonthSales: number;
   EntID: string;
+  BranchEntID: string;
 }

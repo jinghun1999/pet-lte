@@ -12,8 +12,8 @@ export class ReportGroupService {
   }
 
   // 集团数据
-  getGroupInfo(id: string): Observable<Result> {
-    return this.http.get<Result>(environment.baseUrl + '/reportBranch/getBranchInfo');
+  getGroupInfo(): Observable<Result> {
+    return this.http.get<Result>(environment.baseUrl + '/reportGroup/getEnterpriseInfo');
   }
 
   getGroupMonth(): Observable<Result> {

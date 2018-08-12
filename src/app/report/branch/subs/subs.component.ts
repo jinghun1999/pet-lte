@@ -10,7 +10,7 @@ import {ReportGroupService} from '../../../shared/services';
 export class SubsComponent implements OnInit {
   hospitals: EntModel[];
 
-  constructor(private  rpService: ReportGroupService) {
+  constructor(private  groupService: ReportGroupService) {
   }
 
   ngOnInit() {
@@ -20,7 +20,7 @@ export class SubsComponent implements OnInit {
   }
 
   load(): void {
-    this.rpService.getBranchEnt().subscribe(rs => {
+    this.groupService.getBranchEnt().subscribe(rs => {
       this.hospitals = rs.Sign ? rs.Message as EntModel[] : [];
     });
   }
