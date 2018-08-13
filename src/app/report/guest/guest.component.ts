@@ -14,7 +14,7 @@ export class GuestComponent implements OnInit {
   guestPager: PagerResult;
   list: GuestModel[];
   list_income: IncomeDetail[] = [];
-  currentGuest: GuestModel;
+  currentGuest: GuestModel = new GuestModel();
 
   pageParams = new PageParams();
   pageParams2 = new PageParams();
